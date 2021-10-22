@@ -3,7 +3,10 @@ package br.ucsal.ucsalnews.entity;
 import br.ucsal.ucsalnews.enums.Role;
 
 import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Objects;
+
 
 @Entity
 public class User {
@@ -16,8 +19,12 @@ public class User {
     private String email;
     private String password;
 
+    @ManyToMany(mappedBy = "user")
+    private List<New> news = new ArrayList<>();
+
     @Enumerated(value= EnumType.STRING)
     private Role role;
+
 
     public User(){
 
@@ -78,6 +85,10 @@ public class User {
 
     public void setRole(Role role) {
         this.role = role;
+    }
+
+    public List<New> getNews() {
+        return news;
     }
 
     @Override

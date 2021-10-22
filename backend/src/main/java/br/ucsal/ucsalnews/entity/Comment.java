@@ -1,10 +1,8 @@
 package br.ucsal.ucsalnews.entity;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 import java.time.LocalDate;
+import java.util.List;
 
 @Entity
 public class Comment {
@@ -15,6 +13,9 @@ public class Comment {
     private LocalDate date;
     private String content;
 
+
+    @ManyToMany(mappedBy = "comment")
+    private List<New> news;
 
     public Comment(){
 

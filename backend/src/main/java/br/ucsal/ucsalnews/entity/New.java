@@ -1,10 +1,10 @@
 package br.ucsal.ucsalnews.entity;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import org.yaml.snakeyaml.tokens.CommentToken;
+
+import javax.persistence.*;
 import java.time.LocalDate;
+import java.util.List;
 
 @Entity
 public class New {
@@ -17,6 +17,17 @@ public class New {
     private String content;
     private String image;
     private String author;
+
+    @ManyToMany()
+    @JoinColumn(name = "user_id")
+    private List<User> user;
+
+    @OneToOne()
+    @JoinColumn(name = "comment")
+    private Comment comment;
+
+    @ManyToMany(mappedBy = "news")
+    private List<Category> category;
 
     public New() {
 
