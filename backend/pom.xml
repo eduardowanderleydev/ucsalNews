@@ -43,8 +43,11 @@
 			<artifactId>h2</artifactId>
 			<scope>runtime</scope>
 		</dependency>
-    </dependencies>
-
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-validation</artifactId>
+			<version>2.5.3</version>
+		</dependency>
+	</dependencies>
 	<build>
 		<plugins>
 			<plugin>
@@ -53,5 +56,4 @@
 			</plugin>
 		</plugins>
 	</build>
-
 </project>
