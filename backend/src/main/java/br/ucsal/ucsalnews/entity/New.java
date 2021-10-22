@@ -17,20 +17,18 @@ public class New {
     private String content;
     private String image;
     private String author;
-    private boolean like;
 
     public New() {
 
     }
 
-    public New(Long id, LocalDate date, String title, String content, String image, String author, boolean like) {
+    public New(Long id, LocalDate date, String title, String content, String image, String author) {
         this.id = id;
         this.date = date;
         this.title = title;
         this.content = content;
         this.image = image;
         this.author = author;
-        this.like = like;
     }
 
     public Long getId() {
@@ -79,13 +77,5 @@ public class New {
 
     public void setAuthor(String author) {
         this.author = author;
-    }
-
-    public boolean isLike() {
-        return like;
-    }
-
-    public void setLike(boolean like) {
-        this.like = like;
     }
 }
