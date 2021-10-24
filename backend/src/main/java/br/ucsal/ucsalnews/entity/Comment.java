@@ -13,9 +13,12 @@ public class Comment {
     private LocalDate date;
     private String content;
 
+    @OneToOne
+    @JoinColumn(name = "user_id")
+    private User user;
 
-    @ManyToMany(mappedBy = "comment")
-    private List<New> news;
+    @OneToOne(mappedBy = "comment")
+    private New news;
 
     public Comment(){
 
@@ -49,5 +52,13 @@ public class Comment {
 
     public void setContent(String content) {
         this.content = content;
+    }
+
+    public New getNews() {
+        return news;
+    }
+
+    public void setNews(New news) {
+        this.news = news;
     }
 }

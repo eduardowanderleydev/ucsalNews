@@ -1,6 +1,8 @@
 package br.ucsal.ucsalnews.entity;
 
 import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 public class Category {
@@ -10,9 +12,9 @@ public class Category {
     private Long id;
     private String name;
 
-    @OneToOne
+    @ManyToMany
     @JoinColumn(name = "news_id")
-    private New news;
+    private List<New> news = new ArrayList<>();
 
 
     public Category(){
@@ -38,5 +40,9 @@ public class Category {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public List<New> getNews() {
+        return news;
     }
 }
