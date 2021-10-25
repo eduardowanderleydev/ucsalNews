@@ -1,10 +1,11 @@
 package br.ucsal.ucsalnews.entity;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import org.yaml.snakeyaml.tokens.CommentToken;
+
+import javax.persistence.*;
 import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 public class New {
@@ -16,19 +17,31 @@ public class New {
     private String title;
     private String content;
     private String image;
-    private String author;
+
+    @OneToOne()
+    @JoinColumn(name = "user_id")
+    private User author;
+
+    @OneToMany()
+    @JoinColumn(name = "comment")
+    private List<Comment> comment = new ArrayList<>();
+
+    @ManyToMany(mappedBy = "news")
+    private List<Category> category = new ArrayList<>();
 
     public New() {
 
     }
 
-    public New(Long id, LocalDate date, String title, String content, String image, String author) {
+    public New(Long id, LocalDate date, String title, String content, String image, User author, List<Comment> comment, List<Category> category) {
         this.id = id;
         this.date = date;
         this.title = title;
         this.content = content;
         this.image = image;
         this.author = author;
+        this.comment = comment;
+        this.category = category;
     }
 
     public Long getId() {
@@ -71,11 +84,12 @@ public class New {
         this.image = image;
     }
 
-    public String getAuthor() {
-        return author;
+
+    public List<Comment> getComment() {
+        return comment;
     }
 
-    public void setAuthor(String author) {
-        this.author = author;
+    public List<Category> getCategory() {
+        return category;
     }
 }

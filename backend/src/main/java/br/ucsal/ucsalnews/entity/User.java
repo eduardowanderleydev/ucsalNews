@@ -3,7 +3,10 @@ package br.ucsal.ucsalnews.entity;
 import br.ucsal.ucsalnews.enums.Role;
 
 import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Objects;
+
 
 @Entity
 public class User {
@@ -12,23 +15,29 @@ public class User {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String name;
-    private String userName;
+    private String username;
     private String email;
     private String password;
 
+
+    @OneToMany(mappedBy = "user")
+    private List<Comment> comment = new  ArrayList<>();
+
     @Enumerated(value= EnumType.STRING)
-    private Role role;
+    private List<Role> role = new ArrayList<>();
+
 
     public User(){
 
     }
 
-    public User(Long id, String name, String userName, String email, String password, Role role) {
+    public User(Long id, String name, String username, String email, String password, List<Comment> comment, List<Role> role) {
         this.id = id;
         this.name = name;
-        this.userName = userName;
+        this.username = username;
         this.email = email;
         this.password = password;
+        this.comment = comment;
         this.role = role;
     }
 
@@ -49,11 +58,11 @@ public class User {
     }
 
     public String getUserName() {
-        return userName;
+        return username;
     }
 
     public void setUserName(String userName) {
-        this.userName = userName;
+        this.username = userName;
     }
 
     public String getEmail() {
@@ -72,12 +81,20 @@ public class User {
         this.password = password;
     }
 
-    public Role getRole() {
+    public List<Comment> getComment() {
+        return comment;
+    }
+
+    public List<Role> getRole() {
         return role;
     }
 
-    public void setRole(Role role) {
-        this.role = role;
+    public String getUsername() {
+        return username;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
     }
 
     @Override

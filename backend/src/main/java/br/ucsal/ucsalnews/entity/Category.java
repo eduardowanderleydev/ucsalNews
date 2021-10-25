@@ -1,9 +1,8 @@
 package br.ucsal.ucsalnews.entity;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 public class Category {
@@ -12,6 +11,11 @@ public class Category {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String name;
+
+    @ManyToMany
+    @JoinColumn(name = "news_id")
+    private List<New> news = new ArrayList<>();
+
 
     public Category(){
 
@@ -36,5 +40,9 @@ public class Category {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public List<New> getNews() {
+        return news;
     }
 }
