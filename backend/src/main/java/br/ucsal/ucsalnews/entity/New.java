@@ -1,7 +1,6 @@
 package br.ucsal.ucsalnews.entity;
 
 import javax.persistence.*;
-import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;

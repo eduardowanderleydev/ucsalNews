@@ -28,8 +28,11 @@ public class NewServiceImpl implements INewService {
 
     @Override
     public New findById(long id) {
-        New newFound = repository.findById(id).get();
-        return newFound;
+        Optional<New> optional = repository.findById(id);
+        if (optional.isPresent()){
+            return optional.get();
+        }
+        return null;
     }
 
     @Override

@@ -57,12 +57,12 @@ public class User {
         this.name = name;
     }
 
-    public String getUserName() {
+    public String getUsername() {
         return username;
     }
 
-    public void setUserName(String userName) {
-        this.username = userName;
+    public void setUsername(String username) {
+        this.username = username;
     }
 
     public String getEmail() {
@@ -85,16 +85,16 @@ public class User {
         return comment;
     }
 
+    public void setComment(List<Comment> comment) {
+        this.comment = comment;
+    }
+
     public Role getRole() {
         return role;
     }
 
-    public String getUsername() {
-        return username;
-    }
-
-    public void setUsername(String username) {
-        this.username = username;
+    public void setRole(Role role) {
+        this.role = role;
     }
 
     @Override

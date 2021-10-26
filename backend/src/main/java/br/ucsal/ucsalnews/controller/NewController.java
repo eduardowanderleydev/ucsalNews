@@ -10,7 +10,6 @@ import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
-import java.util.Optional;
 
 @RestController
 @RequestMapping ("/news")
@@ -20,7 +19,7 @@ public class NewController {
     private INewService service;
 
     @GetMapping
-    public ResponseEntity findAll(){
+    public ResponseEntity<List<New>> findAll(){
         List<New> listNews = service.findAll();
         return ResponseEntity.ok(listNews);
     }
@@ -30,7 +29,7 @@ public class NewController {
         try {
             New newToSave = newDto.convertToNew();
             service.save(newToSave);
-            return new ResponseEntity(newToSave, HttpStatus.CREATED);
+            return new ResponseEntity<New>(newToSave, HttpStatus.CREATED);
         } catch (Exception e){
             return ResponseEntity.badRequest().body(e.getMessage());
         }
@@ -38,7 +37,7 @@ public class NewController {
 
     @DeleteMapping("/{id}")
     @Transactional
-    public ResponseEntity<?> remove(@PathVariable Long id) {
+    public ResponseEntity<Long> remove(@PathVariable Long id) {
         New newFound = service.findById(id);
         if (newFound != null) {
             service.deleteById(id);
@@ -48,7 +47,7 @@ public class NewController {
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity findById(long id){
+    public ResponseEntity<New> findById(@PathVariable Long id){
         New newFound = service.findById(id);
         if (newFound != null) {
             return ResponseEntity.ok(newFound);
