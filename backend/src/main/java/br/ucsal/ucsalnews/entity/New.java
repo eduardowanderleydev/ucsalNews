@@ -1,9 +1,8 @@
 package br.ucsal.ucsalnews.entity;
 
-import org.yaml.snakeyaml.tokens.CommentToken;
-
 import javax.persistence.*;
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -13,7 +12,7 @@ public class New {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    private LocalDate date;
+    private LocalDateTime date;
     private String title;
     private String content;
     private String image;
@@ -30,12 +29,12 @@ public class New {
     private List<Category> category = new ArrayList<>();
 
     public New() {
-
+        this.date = LocalDateTime.now();
     }
 
-    public New(Long id, LocalDate date, String title, String content, String image, User author, List<Comment> comment, List<Category> category) {
+    public New(Long id, String title, String content, String image, User author, List<Comment> comment, List<Category> category) {
         this.id = id;
-        this.date = date;
+        this.date = LocalDateTime.now();
         this.title = title;
         this.content = content;
         this.image = image;
@@ -52,12 +51,28 @@ public class New {
         this.id = id;
     }
 
-    public LocalDate getDate() {
+    public LocalDateTime getDate() {
         return date;
     }
 
-    public void setDate(LocalDate date) {
+    public void setDate(LocalDateTime date) {
         this.date = date;
+    }
+
+    public User getAuthor() {
+        return author;
+    }
+
+    public void setAuthor(User author) {
+        this.author = author;
+    }
+
+    public void setComment(List<Comment> comment) {
+        this.comment = comment;
+    }
+
+    public void setCategory(List<Category> category) {
+        this.category = category;
     }
 
     public String getTitle() {
@@ -83,7 +98,6 @@ public class New {
     public void setImage(String image) {
         this.image = image;
     }
-
 
     public List<Comment> getComment() {
         return comment;

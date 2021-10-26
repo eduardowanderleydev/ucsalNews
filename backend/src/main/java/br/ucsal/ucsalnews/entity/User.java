@@ -24,14 +24,14 @@ public class User {
     private List<Comment> comment = new  ArrayList<>();
 
     @Enumerated(value= EnumType.STRING)
-    private List<Role> role = new ArrayList<>();
+    private Role role;
 
 
     public User(){
 
     }
 
-    public User(Long id, String name, String username, String email, String password, List<Comment> comment, List<Role> role) {
+    public User(Long id, String name, String username, String email, String password, List<Comment> comment, Role role) {
         this.id = id;
         this.name = name;
         this.username = username;
@@ -85,7 +85,7 @@ public class User {
         return comment;
     }
 
-    public List<Role> getRole() {
+    public Role getRole() {
         return role;
     }
 

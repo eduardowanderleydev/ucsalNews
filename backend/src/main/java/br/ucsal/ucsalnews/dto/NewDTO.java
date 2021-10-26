@@ -1,5 +1,7 @@
 package br.ucsal.ucsalnews.dto;
 
+import br.ucsal.ucsalnews.entity.New;
+
 import javax.validation.constraints.NotEmpty;
 import java.io.Serializable;
 import java.time.LocalDate;
@@ -80,4 +82,15 @@ public class NewDTO implements Serializable {
     public void setAuthor(String author) {
         this.author = author;
     }
+
+    public New convertToNew(){
+        New newConverted = new New();
+        newConverted.setContent(this.content);
+        newConverted.setId(this.id);
+        newConverted.setTitle(this.title);
+        newConverted.setImage(this.image);
+
+        return newConverted;
+    }
+
 }

@@ -17,7 +17,7 @@ public class Comment {
     @JoinColumn(name = "user_id")
     private User user;
 
-    @OneToOne(mappedBy = "comment")
+    @ManyToOne
     private New news;
 
     public Comment(){
