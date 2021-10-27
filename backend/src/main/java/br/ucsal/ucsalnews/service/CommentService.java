@@ -5,7 +5,6 @@ import br.ucsal.ucsalnews.dto.CommentDTO;
 import br.ucsal.ucsalnews.entity.Comment;
 
 import java.util.List;
-import java.util.Optional;
 
 
 public interface CommentService {
