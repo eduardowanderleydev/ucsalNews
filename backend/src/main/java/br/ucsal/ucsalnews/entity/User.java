@@ -23,11 +23,11 @@ public class User {
     @OneToMany(mappedBy = "user")
     private List<Comment> comment = new  ArrayList<>();
 
-    @Enumerated(value= EnumType.STRING)
+    @Enumerated(value = EnumType.STRING)
     private Role role;
 
 
-    public User(){
+    public User() {
 
     }
 

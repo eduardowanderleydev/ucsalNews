@@ -16,7 +16,7 @@ public class Category {
     @JoinColumn(name = "news_id")
     private List<New> news = new ArrayList<>();
 
-    public Category(){
+    public Category() {
 
     }
 
