@@ -1,6 +1,8 @@
 import React from 'react'
 import './styles.css'
 
+import {Link} from 'react-router-dom'
+
 function login() {
     return (
         <div className="login-back">
@@ -20,7 +22,7 @@ function login() {
                     </div>
 
                     <div>
-                        <input className="submit" type="submit" value="sign in" />
+                        <Link to ='/Home'>Sign In</Link>
                     </div>
                 </form>
             </div>
