@@ -4,7 +4,7 @@ import br.ucsal.ucsalnews.dto.CommentDTO;
 import br.ucsal.ucsalnews.entity.Comment;
 import br.ucsal.ucsalnews.exception.ObjectNotFoundException;
 import br.ucsal.ucsalnews.repository.CommentRepository;
-import br.ucsal.ucsalnews.service.CommentService;
+import br.ucsal.ucsalnews.service.ICommentService;
 import br.ucsal.ucsalnews.service.INewService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -16,7 +16,7 @@ import java.util.Optional;
 
 
 @Service
-public class CommentServiceImpl implements CommentService {
+public class CommentServiceImpl implements ICommentService {
 
     @Autowired
     private CommentRepository commentRepository;

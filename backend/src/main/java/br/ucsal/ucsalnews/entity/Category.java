@@ -2,8 +2,7 @@ package br.ucsal.ucsalnews.entity;
 
 import javax.persistence.*;
 import java.io.Serializable;
-import java.util.ArrayList;
-import java.util.List;
+
 
 @Entity
 public class Category implements Serializable {
@@ -12,10 +11,6 @@ public class Category implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String name;
-
-    @ManyToMany
-    @JoinColumn(name = "news_id")
-    private List<New> news = new ArrayList<>();
 
     public Category() {
 
@@ -42,7 +37,5 @@ public class Category implements Serializable {
         this.name = name;
     }
 
-    public List<New> getNews() {
-        return news;
-    }
+
 }

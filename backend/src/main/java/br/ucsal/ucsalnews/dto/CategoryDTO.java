@@ -1,5 +1,7 @@
 package br.ucsal.ucsalnews.dto;
 
+import br.ucsal.ucsalnews.entity.Category;
+
 import javax.validation.constraints.NotEmpty;
 import java.io.Serializable;
 
@@ -11,13 +13,14 @@ public class CategoryDTO implements Serializable {
     @NotEmpty(message = "Preenchimento obrigatório")
     private String name;
 
+
     public CategoryDTO() {
 
     }
 
-    public CategoryDTO(Long id, String name) {
-        this.id = id;
-        this.name = name;
+    public CategoryDTO(Category category) {
+        this.id = category.getId();
+        this.name = category.getName();
     }
 
     public Long getId() {
