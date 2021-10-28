@@ -18,6 +18,10 @@ public class CommentDTO implements Serializable {
     @NotEmpty(message = "Preenchimento obrigatório")
     private String content;
 
+    private Long new_id;
+
+    private Long user_id;
+
     public CommentDTO() {
         this.date = LocalDateTime.now();
     }
@@ -25,7 +29,24 @@ public class CommentDTO implements Serializable {
     public CommentDTO(Comment comment) {
         this.id = comment.getId();
         this.date = comment.getDate();
+        this.new_id = comment.getNews().getId();
         this.content = comment.getContent();
+    }
+
+    public Long getNew_id() {
+        return new_id;
+    }
+
+    public void setNew_id(Long new_id) {
+        this.new_id = new_id;
+    }
+
+    public Long getUser_id() {
+        return user_id;
+    }
+
+    public void setUser_id(Long user_id) {
+        this.user_id = user_id;
     }
 
     public LocalDateTime getDate() {

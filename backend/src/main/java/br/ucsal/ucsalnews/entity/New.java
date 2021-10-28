@@ -23,7 +23,6 @@ public class New implements Serializable {
     private User author;
 
     @OneToMany()
-    @JoinColumn(name = "comment")
     private List<Comment> comment = new ArrayList<>();
 
     @ManyToMany(mappedBy = "news")
