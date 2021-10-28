@@ -1,9 +1,12 @@
 import React from 'react'
 import './styles.css'
 
-import {Link} from 'react-router-dom'
+import {useHistory} from 'react-router-dom'
 
 function login() {
+    // eslint-disable-next-line react-hooks/rules-of-hooks
+    const history = useHistory();
+
     return (
         <div className="login-back">
 
@@ -18,11 +21,11 @@ function login() {
                     </div>
 
                     <div>
-                        <input type="text" placeholder="Password" />
+                        <input type="password" placeholder="Password" />
                     </div>
 
                     <div>
-                        <Link to ='/Home'>Sign In</Link>
+                        <button onClick={() => {history.push('/Home')}} className="submit">Sign In</button>
                     </div>
                 </form>
             </div>

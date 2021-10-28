@@ -1,0 +1,8 @@
+.back {
+    background: url(./assets/fundoLogin.png);
+    height: 100vh;
+    background-repeat: no-repeat;
+}
+.ola {
+    background-color: green;
+}
