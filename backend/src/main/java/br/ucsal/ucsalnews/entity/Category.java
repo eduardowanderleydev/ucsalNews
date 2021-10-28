@@ -1,12 +1,13 @@
 package br.ucsal.ucsalnews.entity;
 
 import javax.persistence.*;
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
 @Entity
-public class Category {
-
+public class Category implements Serializable {
+    private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -16,7 +17,7 @@ public class Category {
     @JoinColumn(name = "news_id")
     private List<New> news = new ArrayList<>();
 
-    public Category(){
+    public Category() {
 
     }
 

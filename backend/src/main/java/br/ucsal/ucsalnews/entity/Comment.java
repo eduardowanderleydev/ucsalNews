@@ -1,15 +1,22 @@
 package br.ucsal.ucsalnews.entity;
 
+
+import com.fasterxml.jackson.annotation.JsonFormat;
+
 import javax.persistence.*;
-import java.time.LocalDate;
+import java.io.Serializable;
+import java.time.LocalDateTime;
 
 @Entity
-public class Comment {
+public class Comment implements Serializable {
+    private static final long serialVersionUID = 1L;
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    private LocalDate date;
+
+    @JsonFormat(pattern = "dd/MM/yyyy HH:mm")
+    private LocalDateTime date;
     private String content;
 
     @OneToOne
@@ -17,15 +24,16 @@ public class Comment {
     private User user;
 
     @ManyToOne
+    @JoinColumn(name = "news_id")
     private New news;
 
-    public Comment(){
-
+    public Comment() {
+        this.date = LocalDateTime.now();
     }
 
-    public Comment(Long id, LocalDate date, String content) {
+    public Comment(Long id, String content) {
         this.id = id;
-        this.date = date;
+        this.date = LocalDateTime.now();
         this.content = content;
     }
 
@@ -37,11 +45,19 @@ public class Comment {
         this.id = id;
     }
 
-    public LocalDate getDate() {
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
+    }
+
+    public LocalDateTime getDate() {
         return date;
     }
 
-    public void setDate(LocalDate date) {
+    public void setDate(LocalDateTime date) {
         this.date = date;
     }
 
