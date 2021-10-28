@@ -7,7 +7,7 @@ import br.ucsal.ucsalnews.entity.Comment;
 import java.util.List;
 
 
-public interface CommentService {
+public interface ICommentService {
 
     CommentDTO insert(CommentDTO dto);
 

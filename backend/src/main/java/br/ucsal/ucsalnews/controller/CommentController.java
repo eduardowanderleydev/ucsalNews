@@ -2,7 +2,7 @@ package br.ucsal.ucsalnews.controller;
 
 import br.ucsal.ucsalnews.dto.CommentDTO;
 import br.ucsal.ucsalnews.entity.Comment;
-import br.ucsal.ucsalnews.service.impl.CommentServiceImpl;
+import br.ucsal.ucsalnews.service.ICommentService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -18,7 +18,7 @@ import java.util.stream.Collectors;
 public class CommentController {
 
     @Autowired
-    CommentServiceImpl service;
+    ICommentService service;
 
     @PostMapping
     public ResponseEntity insert(@Valid @RequestBody CommentDTO dto) {

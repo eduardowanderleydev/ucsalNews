@@ -25,7 +25,7 @@ public class New implements Serializable {
     @OneToMany()
     private List<Comment> comment = new ArrayList<>();
 
-    @ManyToMany(mappedBy = "news")
+    @ManyToMany()
     private List<Category> category = new ArrayList<>();
 
     public New() {
