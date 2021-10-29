@@ -3,6 +3,7 @@ package br.ucsal.ucsalnews.service.impl;
 import br.ucsal.ucsalnews.dto.request.UserDTORequest;
 import br.ucsal.ucsalnews.dto.response.UserDTOResponse;
 import br.ucsal.ucsalnews.entity.User;
+import br.ucsal.ucsalnews.exception.AuthenticationErrorException;
 import br.ucsal.ucsalnews.exception.BusinessRuleException;
 import br.ucsal.ucsalnews.exception.ObjectNotFoundException;
 import br.ucsal.ucsalnews.repository.UserRepository;
@@ -61,6 +62,18 @@ public class UserServiceImpl implements IUserService {
         if(existe){
             throw new BusinessRuleException("Email já cadastrado, tente outro!");
         }
+    }
+
+    @Override
+    public User autenticar(String email, String senha) {
+        Optional<User> user = repository.findByEmail(email);
+        if(!user.isPresent()){
+            throw new AuthenticationErrorException("Usuário não cadastrado para o email informado!");
+        }
+        if(!user.get().getPassword().equals(senha)){
+            throw new AuthenticationErrorException("Senha inválida!");
+        }
+        return user.get();
     }
 
     private void dtoToObj(User obj, UserDTORequest dto) {

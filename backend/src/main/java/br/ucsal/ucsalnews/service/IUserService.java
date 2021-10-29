@@ -19,4 +19,7 @@ public interface IUserService {
     List<User> findAll();
 
     void validarEmail(String email);
+
+    User autenticar(String email,String senha);
+
 }
