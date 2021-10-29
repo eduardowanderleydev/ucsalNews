@@ -1,5 +1,6 @@
 package br.ucsal.ucsalnews.controller.exception;
 
+import br.ucsal.ucsalnews.exception.BusinessRuleException;
 import br.ucsal.ucsalnews.exception.DataIntegrityViolationException;
 import br.ucsal.ucsalnews.exception.ItemNotFoundException;
 import br.ucsal.ucsalnews.exception.ObjectNotFoundException;
@@ -31,6 +32,12 @@ public class ResourceExceptionHandler {
     public ResponseEntity<StandardError> itemNotFound(ItemNotFoundException e, HttpServletRequest request){
         StandardError err = new StandardError(HttpStatus.NOT_FOUND.value(),e.getMessage(),System.currentTimeMillis());
         return ResponseEntity.status(HttpStatus.NOT_FOUND).body(err);
+    }
+
+    @ExceptionHandler(BusinessRuleException.class)
+    public ResponseEntity<StandardError> businessRole(BusinessRuleException e,HttpServletRequest request){
+        StandardError err = new StandardError(HttpStatus.BAD_REQUEST.value(),e.getMessage(),System.currentTimeMillis());
+        return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(err);
     }
 
     @ExceptionHandler(MethodArgumentNotValidException.class)
