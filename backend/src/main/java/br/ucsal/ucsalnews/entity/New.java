@@ -1,5 +1,8 @@
 package br.ucsal.ucsalnews.entity;
 
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
 import java.io.Serializable;
 import java.time.LocalDateTime;
@@ -22,9 +25,11 @@ public class New implements Serializable {
     @JoinColumn(name = "user_id")
     private User author;
 
+    @JsonIgnore
     @OneToMany(cascade = CascadeType.ALL)
     private List<Comment> comment = new ArrayList<>();
 
+    @JsonIgnore
     @ManyToMany()
     private List<Category> categories = new ArrayList<>();
 
@@ -43,12 +48,13 @@ public class New implements Serializable {
         this.categories = categories;
     }
 
-    public New(Long id,String title, String content, String image) {
+    public New(Long id, String title, String content, String image, User user) {
         this.id = id;
         this.date = LocalDateTime.now();
         this.title = title;
         this.content = content;
         this.image = image;
+        this.author = user;
     }
 
     public Long getId() {
