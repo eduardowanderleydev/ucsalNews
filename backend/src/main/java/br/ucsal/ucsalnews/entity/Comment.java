@@ -2,6 +2,7 @@ package br.ucsal.ucsalnews.entity;
 
 
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
@@ -17,10 +18,12 @@ public class Comment {
     private LocalDateTime date;
     private String content;
 
+    @JsonIgnore
     @OneToOne
     @JoinColumn(name = "user_id")
     private User user;
 
+    @JsonIgnore
     @ManyToOne
     @JoinColumn(name = "news_id")
     private New news;
@@ -33,6 +36,14 @@ public class Comment {
         this.id = id;
         this.date = LocalDateTime.now();
         this.content = content;
+    }
+
+    public Comment(Long id,String content, User user, New news) {
+        this.id = id;
+        this.content = content;
+        this.date = LocalDateTime.now();
+        this.user = user;
+        this.news = news;
     }
 
     public Long getId() {
