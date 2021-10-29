@@ -1,12 +1,15 @@
 package br.ucsal.ucsalnews.entity;
 
-import javax.persistence.*;
-import java.io.Serializable;
+import br.ucsal.ucsalnews.dto.CategoryDTO;
+
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 
 
 @Entity
-public class Category implements Serializable {
-    private static final long serialVersionUID = 1L;
+public class Category {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -19,6 +22,11 @@ public class Category implements Serializable {
     public Category(Long id, String name) {
         this.id = id;
         this.name = name;
+    }
+
+    public Category(CategoryDTO obj) {
+        this.id = obj.getId();
+        this.name = obj.getName();
     }
 
     public Long getId() {

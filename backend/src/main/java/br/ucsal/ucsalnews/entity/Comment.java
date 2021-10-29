@@ -4,12 +4,10 @@ package br.ucsal.ucsalnews.entity;
 import com.fasterxml.jackson.annotation.JsonFormat;
 
 import javax.persistence.*;
-import java.io.Serializable;
 import java.time.LocalDateTime;
 
 @Entity
-public class Comment implements Serializable {
-    private static final long serialVersionUID = 1L;
+public class Comment {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

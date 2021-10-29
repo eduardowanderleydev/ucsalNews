@@ -24,7 +24,7 @@ public class CategoryServiceImpl implements ICategoryService {
     public CategoryDTO insert(CategoryDTO dto) {
         dto.setId(null);
         Category obj = new Category();
-        dtoToObj(obj,dto);
+        dtoToObj(obj, dto);
         repository.save(obj);
         return new CategoryDTO(obj);
     }
@@ -33,7 +33,7 @@ public class CategoryServiceImpl implements ICategoryService {
     @Transactional
     public CategoryDTO update(Long id, CategoryDTO dto) {
         findById(id);
-        Category newObj= updateData(id,dto);
+        Category newObj = updateData(id, dto);
         repository.save(newObj);
         return new CategoryDTO(newObj);
     }
@@ -55,16 +55,16 @@ public class CategoryServiceImpl implements ICategoryService {
     @Transactional(readOnly = true)
     public Category findById(Long id) {
         Optional<Category> obj = repository.findById(id);
-        return obj.orElseThrow(() ->new ObjectNotFoundException("Id não encontrado! id: "+id));
+        return obj.orElseThrow(() -> new ObjectNotFoundException("Id não encontrado! id: " + id));
     }
 
-    public Category dtoToObj(Category obj,CategoryDTO dto){
+    public Category dtoToObj(Category obj, CategoryDTO dto) {
         obj.setId(dto.getId());
         obj.setName(dto.getName());
         return obj;
     }
 
-    public Category updateData(Long id,CategoryDTO dto){
+    public Category updateData(Long id, CategoryDTO dto) {
         Category obj = repository.getById(id);
         obj.setName(dto.getName());
         return obj;

@@ -1,4 +1,4 @@
-package br.ucsal.ucsalnews.dto;
+package br.ucsal.ucsalnews.dto.request;
 
 import org.hibernate.validator.constraints.Length;
 
@@ -6,17 +6,17 @@ import javax.validation.constraints.Email;
 import javax.validation.constraints.NotEmpty;
 import java.io.Serializable;
 
-public class UserDTO implements Serializable {
+public class UserDTORequest implements Serializable {
     private static final long serialVersionUID = 1L;
 
-    private Long id;
+    private Long id; // TODO is it really necessary ?
 
     @NotEmpty(message = "Preenchimento obrigatório")
-    @Length(min = 3,  max =80, message = "tamanho deve ser entre 3 e 80 caracteres")
+    @Length(min = 3, max = 80, message = "tamanho deve ser entre 3 e 80 caracteres")
     private String name;
 
     @NotEmpty(message = "Preenchimento obrigatório")
-    @Length(min = 3,  max =80, message = "O tamanho deve ser entre 3 e 80 caracteres")
+    @Length(min = 3, max = 80, message = "O tamanho deve ser entre 3 e 80 caracteres")
     private String userName;
 
     @NotEmpty(message = "Preenchimento obrigatório")
@@ -26,16 +26,17 @@ public class UserDTO implements Serializable {
     @NotEmpty
     private String password;
 
-    public UserDTO() {
+    public UserDTORequest() {
     }
 
-    public UserDTO(Long id, String name, String userName, String email, String password) {
+    public UserDTORequest(Long id, String name, String userName, String email, String password) {
         this.id = id;
         this.name = name;
         this.userName = userName;
         this.email = email;
         this.password = password;
     }
+
 
     public Long getId() {
         return id;

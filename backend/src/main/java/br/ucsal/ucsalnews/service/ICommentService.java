@@ -11,7 +11,7 @@ public interface ICommentService {
 
     CommentDTO insert(CommentDTO dto);
 
-    CommentDTO update(Long id,CommentDTO dto);
+    CommentDTO update(Long id, CommentDTO dto);
 
     void delete(Long id);
 

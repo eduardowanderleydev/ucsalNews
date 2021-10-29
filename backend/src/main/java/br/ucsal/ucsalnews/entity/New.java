@@ -18,21 +18,21 @@ public class New implements Serializable {
     private String content;
     private String image;
 
-    @OneToOne()
+    @OneToOne(cascade = CascadeType.PERSIST)
     @JoinColumn(name = "user_id")
     private User author;
 
-    @OneToMany()
+    @OneToMany(cascade = CascadeType.ALL)
     private List<Comment> comment = new ArrayList<>();
 
     @ManyToMany()
-    private List<Category> category = new ArrayList<>();
+    private List<Category> categories = new ArrayList<>();
 
     public New() {
         this.date = LocalDateTime.now();
     }
 
-    public New(Long id, String title, String content, String image, User author, List<Comment> comment, List<Category> category) {
+    public New(Long id, String title, String content, String image, User author, List<Comment> comment, List<Category> categories) {
         this.id = id;
         this.date = LocalDateTime.now();
         this.title = title;
@@ -40,7 +40,7 @@ public class New implements Serializable {
         this.image = image;
         this.author = author;
         this.comment = comment;
-        this.category = category;
+        this.categories = categories;
     }
 
     public Long getId() {
@@ -71,8 +71,8 @@ public class New implements Serializable {
         this.comment = comment;
     }
 
-    public void setCategory(List<Category> category) {
-        this.category = category;
+    public void setCategories(List<Category> categories) {
+        this.categories = categories;
     }
 
     public String getTitle() {
@@ -103,7 +103,7 @@ public class New implements Serializable {
         return comment;
     }
 
-    public List<Category> getCategory() {
-        return category;
+    public List<Category> getCategories() {
+        return categories;
     }
 }

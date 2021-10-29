@@ -3,15 +3,13 @@ package br.ucsal.ucsalnews.entity;
 import br.ucsal.ucsalnews.enums.Role;
 
 import javax.persistence.*;
-import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
 
 @Entity
-public class User implements Serializable {
-    private static final long serialVersionUID = 1L;
+public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -20,26 +18,25 @@ public class User implements Serializable {
     private String email;
     private String password;
 
-
     @OneToMany(mappedBy = "user")
-    private List<Comment> comment = new  ArrayList<>();
+    private List<Comment> comment = new ArrayList<>();
 
     @Enumerated(value = EnumType.STRING)
     private Role role;
 
 
     public User() {
-
+        this.role = Role.USER;
     }
 
-    public User(Long id, String name, String username, String email, String password, List<Comment> comment, Role role) {
+    public User(Long id, String name, String username, String email, String password, List<Comment> comment) {
         this.id = id;
         this.name = name;
         this.username = username;
         this.email = email;
         this.password = password;
         this.comment = comment;
-        this.role = role;
+        this.role = Role.USER;
     }
 
     public Long getId() {
