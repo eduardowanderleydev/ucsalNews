@@ -49,4 +49,9 @@ public class UserController {
         service.deleteById(id);
         return ResponseEntity.noContent().build();
     }
+
+    @PostMapping("/autenticar")
+    public ResponseEntity autenticar(@RequestBody UserDTORequest dto){
+        return ResponseEntity.ok().body(service.autenticar(dto.getEmail(),dto.getPassword()));
+    }
 }

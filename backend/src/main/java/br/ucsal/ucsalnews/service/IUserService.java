@@ -12,9 +12,14 @@ public interface IUserService {
 
     UserDTOResponse update(Long id, UserDTORequest dto);
 
-    Long deleteById(long id);
+    void deleteById(long id);
 
     User findById(long id);
 
     List<User> findAll();
+
+    void validarEmail(String email);
+
+    User autenticar(String email,String senha);
+
 }

@@ -3,6 +3,8 @@ package br.ucsal.ucsalnews.service.impl;
 import br.ucsal.ucsalnews.dto.request.UserDTORequest;
 import br.ucsal.ucsalnews.dto.response.UserDTOResponse;
 import br.ucsal.ucsalnews.entity.User;
+import br.ucsal.ucsalnews.exception.AuthenticationErrorException;
+import br.ucsal.ucsalnews.exception.BusinessRuleException;
 import br.ucsal.ucsalnews.exception.ObjectNotFoundException;
 import br.ucsal.ucsalnews.repository.UserRepository;
 import br.ucsal.ucsalnews.service.IUserService;
@@ -22,6 +24,7 @@ public class UserServiceImpl implements IUserService {
     @Override
     public UserDTOResponse insert(UserDTORequest dto) {
         dto.setId(null);
+        validarEmail(dto.getEmail());
         User obj = new User();
         dtoToObj(obj, dto);
         repository.save(obj);
@@ -37,10 +40,9 @@ public class UserServiceImpl implements IUserService {
     }
 
     @Override
-    public Long deleteById(long id) {
+    public void deleteById(long id) {
         findById(id);
         repository.deleteById(id);
-        return id;
     }
 
     @Override
@@ -52,6 +54,26 @@ public class UserServiceImpl implements IUserService {
     @Override
     public List<User> findAll() {
         return repository.findAll();
+    }
+
+    @Override
+    public void validarEmail(String email) {
+        boolean existe = repository.existsByEmail(email);
+        if(existe){
+            throw new BusinessRuleException("Email já cadastrado, tente outro!");
+        }
+    }
+
+    @Override
+    public User autenticar(String email, String senha) {
+        Optional<User> user = repository.findByEmail(email);
+        if(!user.isPresent()){
+            throw new AuthenticationErrorException("Usuário não cadastrado para o email informado!");
+        }
+        if(!user.get().getPassword().equals(senha)){
+            throw new AuthenticationErrorException("Senha inválida!");
+        }
+        return user.get();
     }
 
     private void dtoToObj(User obj, UserDTORequest dto) {
