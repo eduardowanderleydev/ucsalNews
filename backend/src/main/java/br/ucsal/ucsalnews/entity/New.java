@@ -43,6 +43,14 @@ public class New implements Serializable {
         this.categories = categories;
     }
 
+    public New(Long id,String title, String content, String image) {
+        this.id = id;
+        this.date = LocalDateTime.now();
+        this.title = title;
+        this.content = content;
+        this.image = image;
+    }
+
     public Long getId() {
         return id;
     }
