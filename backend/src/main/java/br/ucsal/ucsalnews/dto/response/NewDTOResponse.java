@@ -1,14 +1,22 @@
 package br.ucsal.ucsalnews.dto.response;
 
+import br.ucsal.ucsalnews.dto.request.CommentDTORequest;
 import br.ucsal.ucsalnews.entity.New;
+import com.fasterxml.jackson.annotation.JsonFormat;
 
 import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.stream.Collectors;
 
 public class NewDTOResponse {
+    private static DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm");
 
     private Long id;
 
-    private LocalDateTime date;
+    @JsonFormat(pattern = "dd/MM/yyyy HH:mm")
+    private String date;
 
     private String title;
 
@@ -16,12 +24,15 @@ public class NewDTOResponse {
 
     private String image;
 
+    List<CommentDTORequest> comments = new ArrayList<>();
+
     public NewDTOResponse(New obj) {
         this.id = obj.getId();
-        this.date = obj.getDate();
+        this.date = obj.getDate().format(formatter);
         this.title = obj.getTitle();
         this.content = obj.getContent();
         this.image = obj.getImage();
+        this.comments = obj.getComments().stream().map(comment -> new CommentDTORequest(comment)).collect(Collectors.toList());
     }
 
     public Long getId() {
@@ -33,11 +44,11 @@ public class NewDTOResponse {
     }
 
     public LocalDateTime getDate() {
-        return date;
+        return LocalDateTime.parse(this.date, formatter);
     }
 
     public void setDate(LocalDateTime date) {
-        this.date = date;
+        this.date = date.toString();
     }
 
     public String getTitle() {
@@ -62,5 +73,13 @@ public class NewDTOResponse {
 
     public void setImage(String image) {
         this.image = image;
+    }
+
+    public List<CommentDTORequest> getComments() {
+        return comments;
+    }
+
+    public void setComments(List<CommentDTORequest> comments) {
+        this.comments = comments;
     }
 }

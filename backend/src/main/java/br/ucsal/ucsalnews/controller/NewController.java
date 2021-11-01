@@ -60,8 +60,9 @@ public class NewController {
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<New> findById(@PathVariable Long id) {
-        return ResponseEntity.ok().body(service.findById(id));
+    public ResponseEntity<NewDTOResponse> findById(@PathVariable Long id) {
+        NewDTOResponse response = new NewDTOResponse(service.findById(id));
+        return ResponseEntity.ok().body(response);
     }
     @GetMapping("/page")
     public ResponseEntity<Page<NewDTOResponse>> page(Pageable pageable){

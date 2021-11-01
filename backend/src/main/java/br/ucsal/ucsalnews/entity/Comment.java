@@ -38,7 +38,7 @@ public class Comment {
         this.content = content;
     }
 
-    public Comment(Long id,String content, User user, New news) {
+    public Comment(Long id, String content, User user, New news) {
         this.id = id;
         this.content = content;
         this.date = LocalDateTime.now();

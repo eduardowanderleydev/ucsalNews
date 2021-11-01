@@ -20,6 +20,6 @@ public interface IUserService {
 
     void validarEmail(String email);
 
-    User autenticar(String email,String senha);
+    UserDTOResponse autenticar(String email, String senha);
 
 }

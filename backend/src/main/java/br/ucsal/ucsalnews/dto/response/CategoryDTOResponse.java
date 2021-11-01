@@ -1,24 +1,19 @@
-package br.ucsal.ucsalnews.dto;
+package br.ucsal.ucsalnews.dto.response;
 
 import br.ucsal.ucsalnews.entity.Category;
 
-import javax.validation.constraints.NotEmpty;
 import java.io.Serializable;
 
-public class CategoryDTO implements Serializable {
+public class CategoryDTOResponse implements Serializable {
     private static final long serialVersionUID = 1L;
 
     private Long id;
-
-    @NotEmpty(message = "Preenchimento obrigatório")
     private String name;
 
-
-    public CategoryDTO() {
-
+    public CategoryDTOResponse() {
     }
 
-    public CategoryDTO(Category category) {
+    public CategoryDTOResponse(Category category) {
         this.id = category.getId();
         this.name = category.getName();
     }

@@ -3,8 +3,8 @@ package br.ucsal.ucsalnews.controller.exception;
 import java.util.ArrayList;
 import java.util.List;
 
-public class ValidationError extends StandardError{
-    private static final long serialVersionUID =1L;
+public class ValidationError extends StandardError {
+    private static final long serialVersionUID = 1L;
 
     private List<FieldMessage> erros = new ArrayList<>();
 
@@ -17,7 +17,7 @@ public class ValidationError extends StandardError{
         return erros;
     }
 
-    public void addError(String fielName,String message){
-        erros.add(new FieldMessage(fielName,message));
+    public void addError(String fielName, String message) {
+        erros.add(new FieldMessage(fielName, message));
     }
 }

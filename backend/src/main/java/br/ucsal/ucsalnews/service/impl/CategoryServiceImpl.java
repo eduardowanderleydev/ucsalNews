@@ -1,6 +1,6 @@
 package br.ucsal.ucsalnews.service.impl;
 
-import br.ucsal.ucsalnews.dto.CategoryDTO;
+import br.ucsal.ucsalnews.dto.request.CategoryDTORequest;
 import br.ucsal.ucsalnews.entity.Category;
 import br.ucsal.ucsalnews.exception.ObjectNotFoundException;
 import br.ucsal.ucsalnews.repository.CategoryRepository;
@@ -21,21 +21,21 @@ public class CategoryServiceImpl implements ICategoryService {
 
     @Override
     @Transactional
-    public CategoryDTO insert(CategoryDTO dto) {
+    public CategoryDTORequest insert(CategoryDTORequest dto) {
         dto.setId(null);
         Category obj = new Category();
         dtoToObj(obj, dto);
         repository.save(obj);
-        return new CategoryDTO(obj);
+        return new CategoryDTORequest(obj);
     }
 
     @Override
     @Transactional
-    public CategoryDTO update(Long id, CategoryDTO dto) {
+    public CategoryDTORequest update(Long id, CategoryDTORequest dto) {
         findById(id);
         Category newObj = updateData(id, dto);
         repository.save(newObj);
-        return new CategoryDTO(newObj);
+        return new CategoryDTORequest(newObj);
     }
 
     @Override
@@ -58,13 +58,13 @@ public class CategoryServiceImpl implements ICategoryService {
         return obj.orElseThrow(() -> new ObjectNotFoundException("Id não encontrado! id: " + id));
     }
 
-    public Category dtoToObj(Category obj, CategoryDTO dto) {
+    public Category dtoToObj(Category obj, CategoryDTORequest dto) {
         obj.setId(dto.getId());
         obj.setName(dto.getName());
         return obj;
     }
 
-    public Category updateData(Long id, CategoryDTO dto) {
+    public Category updateData(Long id, CategoryDTORequest dto) {
         Category obj = repository.getById(id);
         obj.setName(dto.getName());
         return obj;

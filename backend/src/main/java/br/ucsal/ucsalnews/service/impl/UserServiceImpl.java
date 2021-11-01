@@ -59,21 +59,21 @@ public class UserServiceImpl implements IUserService {
     @Override
     public void validarEmail(String email) {
         boolean existe = repository.existsByEmail(email);
-        if(existe){
+        if (existe) {
             throw new BusinessRuleException("Email já cadastrado, tente outro!");
         }
     }
 
     @Override
-    public User autenticar(String email, String senha) {
+    public UserDTOResponse autenticar(String email, String senha) {
         Optional<User> user = repository.findByEmail(email);
-        if(!user.isPresent()){
+        if (!user.isPresent()) {
             throw new AuthenticationErrorException("Usuário não cadastrado para o email informado!");
         }
-        if(!user.get().getPassword().equals(senha)){
+        if (!user.get().getPassword().equals(senha)) {
             throw new AuthenticationErrorException("Senha inválida!");
         }
-        return user.get();
+        return new UserDTOResponse(user.get());
     }
 
     private void dtoToObj(User obj, UserDTORequest dto) {

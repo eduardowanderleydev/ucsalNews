@@ -1,6 +1,6 @@
 package br.ucsal.ucsalnews.service.impl;
 
-import br.ucsal.ucsalnews.dto.CommentDTO;
+import br.ucsal.ucsalnews.dto.request.CommentDTORequest;
 import br.ucsal.ucsalnews.entity.Comment;
 import br.ucsal.ucsalnews.exception.ObjectNotFoundException;
 import br.ucsal.ucsalnews.repository.CommentRepository;
@@ -27,21 +27,21 @@ public class CommentServiceImpl implements ICommentService {
 
     @Override
     @Transactional
-    public CommentDTO insert(CommentDTO dto) {
+    public CommentDTORequest insert(CommentDTORequest dto) {
         dto.setId(null);
         Comment obj = new Comment();
         dtoToObj(obj, dto);
         commentRepository.save(obj);
-        return new CommentDTO(obj);
+        return new CommentDTORequest(obj);
     }
 
     @Override
     @Transactional
-    public CommentDTO update(Long id, CommentDTO dto) {
+    public CommentDTORequest update(Long id, CommentDTORequest dto) {
         findById(id);
         Comment newObj = updateData(id, dto);
         commentRepository.save(newObj);
-        return new CommentDTO(newObj);
+        return new CommentDTORequest(newObj);
 
     }
 
@@ -67,7 +67,7 @@ public class CommentServiceImpl implements ICommentService {
     }
 
 
-    public Comment dtoToObj(Comment obj, CommentDTO dto) {
+    public Comment dtoToObj(Comment obj, CommentDTORequest dto) {
         obj.setId(dto.getId());
         obj.setDate(dto.getDate());
         obj.setContent(dto.getContent());
@@ -75,7 +75,7 @@ public class CommentServiceImpl implements ICommentService {
         return obj;
     }
 
-    public Comment updateData(Long id, CommentDTO dto) {
+    public Comment updateData(Long id, CommentDTORequest dto) {
         Comment comment = commentRepository.getById(id);
         comment.setContent(dto.getContent());
         comment.setDate(LocalDateTime.now());

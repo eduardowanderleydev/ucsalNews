@@ -23,7 +23,8 @@ public class UserController {
 
     @GetMapping("/{id}")
     public ResponseEntity findById(@PathVariable Long id) {
-        return ResponseEntity.ok().body(service.findById(id));
+        User userFound = service.findById(id);
+        return ResponseEntity.ok().body(new UserDTOResponse(userFound));
     }
 
     @GetMapping
@@ -51,7 +52,7 @@ public class UserController {
     }
 
     @PostMapping("/autenticar")
-    public ResponseEntity autenticar(@RequestBody UserDTORequest dto){
-        return ResponseEntity.ok().body(service.autenticar(dto.getEmail(),dto.getPassword()));
+    public ResponseEntity autenticar(@RequestBody UserDTORequest dto) {
+        return ResponseEntity.ok().body(service.autenticar(dto.getEmail(), dto.getPassword()));
     }
 }

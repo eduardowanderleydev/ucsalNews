@@ -1,15 +1,15 @@
 package br.ucsal.ucsalnews.service;
 
-import br.ucsal.ucsalnews.dto.CategoryDTO;
+import br.ucsal.ucsalnews.dto.request.CategoryDTORequest;
 import br.ucsal.ucsalnews.entity.Category;
 
 import java.util.List;
 
 public interface ICategoryService {
 
-    CategoryDTO insert(CategoryDTO dto);
+    CategoryDTORequest insert(CategoryDTORequest dto);
 
-    CategoryDTO update(Long id, CategoryDTO dto);
+    CategoryDTORequest update(Long id, CategoryDTORequest dto);
 
     void delete(Long id);
 

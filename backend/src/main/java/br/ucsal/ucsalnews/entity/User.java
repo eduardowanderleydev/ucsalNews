@@ -1,6 +1,7 @@
 package br.ucsal.ucsalnews.entity;
 
 import br.ucsal.ucsalnews.enums.Role;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import javax.persistence.*;
 import java.util.ArrayList;
@@ -18,7 +19,8 @@ public class User {
     private String email;
     private String password;
 
-    @OneToMany(mappedBy = "user")
+    @JsonIgnore
+    @OneToMany(mappedBy = "user", fetch = FetchType.LAZY)
     private List<Comment> comment = new ArrayList<>();
 
     @Enumerated(value = EnumType.STRING)

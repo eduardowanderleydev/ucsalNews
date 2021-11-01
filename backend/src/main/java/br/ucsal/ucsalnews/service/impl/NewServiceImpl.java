@@ -1,15 +1,5 @@
 package br.ucsal.ucsalnews.service.impl;
 
-import java.util.List;
-import java.util.Optional;
-import java.util.stream.Collectors;
-
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.Pageable;
-import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
-
 import br.ucsal.ucsalnews.dto.request.NewDTORequest;
 import br.ucsal.ucsalnews.dto.response.NewDTOResponse;
 import br.ucsal.ucsalnews.entity.Category;
@@ -19,7 +9,16 @@ import br.ucsal.ucsalnews.exception.ItemNotFoundException;
 import br.ucsal.ucsalnews.repository.NewRepository;
 import br.ucsal.ucsalnews.repository.UserRepository;
 import br.ucsal.ucsalnews.service.INewService;
-import br.ucsal.ucsalnews.util.DateUtil;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
+
+import java.time.LocalDateTime;
+import java.util.List;
+import java.util.Optional;
+import java.util.stream.Collectors;
 
 @Service
 public class NewServiceImpl implements INewService {
@@ -70,8 +69,6 @@ public class NewServiceImpl implements INewService {
     public List<New> findAll() {
         return newRepository.findAll();
     }
-    
-    
 
     public New dtoToObj(NewDTORequest dto) {
         New newToReturn = new New();
@@ -89,7 +86,7 @@ public class NewServiceImpl implements INewService {
         newToReturn.setContent(dto.getContent());
         newToReturn.setAuthor(findAuthorById(dto.getAuthor_id(), dto));
         newToReturn.setTitle(dto.getTitle());
-        newToReturn.setDate(DateUtil.changeStringToDate(dto.getDate()));
+        newToReturn.setDate(LocalDateTime.now());
         newToReturn.setImage(dto.getImage());
         return newToReturn;
     }
@@ -101,10 +98,10 @@ public class NewServiceImpl implements INewService {
         ));
     }
 
-	@Override
-	public Page<New> findPage(Pageable pageable) {
-		return newRepository.findAll(pageable);
-	}
+    @Override
+    public Page<New> findPage(Pageable pageable) {
+        return newRepository.findAll(pageable);
+    }
 
-	
+
 }

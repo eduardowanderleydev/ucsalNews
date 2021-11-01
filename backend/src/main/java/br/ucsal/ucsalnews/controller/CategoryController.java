@@ -1,6 +1,6 @@
 package br.ucsal.ucsalnews.controller;
 
-import br.ucsal.ucsalnews.dto.CategoryDTO;
+import br.ucsal.ucsalnews.dto.request.CategoryDTORequest;
 import br.ucsal.ucsalnews.entity.Category;
 import br.ucsal.ucsalnews.service.ICategoryService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,24 +22,25 @@ public class CategoryController {
 
     @GetMapping("/{id}")
     public ResponseEntity findById(@PathVariable Long id) {
-        return ResponseEntity.ok().body(service.findById(id));
+        Category categoryFound = service.findById(id);
+        return ResponseEntity.ok().body(new CategoryDTORequest(categoryFound));
     }
 
     @GetMapping
     public ResponseEntity findAll() {
         List<Category> list = service.findAll();
-        List<CategoryDTO> dtoList = list.stream().map(obj -> new CategoryDTO(obj)).collect(Collectors.toList());
+        List<CategoryDTORequest> dtoList = list.stream().map(obj -> new CategoryDTORequest(obj)).collect(Collectors.toList());
         return ResponseEntity.ok().body(dtoList);
     }
 
     @PostMapping
-    public ResponseEntity insert(@Valid @RequestBody CategoryDTO dto) {
+    public ResponseEntity insert(@Valid @RequestBody CategoryDTORequest dto) {
         URI uri = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}").buildAndExpand(dto.getId()).toUri();
         return ResponseEntity.created(uri).body(service.insert(dto));
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity update(@Valid @PathVariable Long id, @RequestBody CategoryDTO dto) {
+    public ResponseEntity update(@Valid @PathVariable Long id, @RequestBody CategoryDTORequest dto) {
         return ResponseEntity.ok().body(service.update(id, dto));
     }
 

@@ -1,7 +1,6 @@
 package br.ucsal.ucsalnews.entity;
 
 
-
 import javax.persistence.*;
 import java.io.Serializable;
 import java.time.LocalDateTime;
@@ -24,10 +23,8 @@ public class New implements Serializable {
     @JoinColumn(name = "user_id")
     private User author;
 
-
     @OneToMany(cascade = CascadeType.ALL)
-    private List<Comment> comment = new ArrayList<>();
-
+    private List<Comment> comments = new ArrayList<>();
 
     @ManyToMany()
     private List<Category> categories = new ArrayList<>();
@@ -36,14 +33,14 @@ public class New implements Serializable {
         this.date = LocalDateTime.now();
     }
 
-    public New(Long id, String title, String content, String image, User author, List<Comment> comment, List<Category> categories) {
+    public New(Long id, String title, String content, String image, User author, List<Comment> comments, List<Category> categories) {
         this.id = id;
         this.date = LocalDateTime.now();
         this.title = title;
         this.content = content;
         this.image = image;
         this.author = author;
-        this.comment = comment;
+        this.comments = comments;
         this.categories = categories;
     }
 
@@ -80,8 +77,8 @@ public class New implements Serializable {
         this.author = author;
     }
 
-    public void setComment(List<Comment> comment) {
-        this.comment = comment;
+    public void setComments(List<Comment> comments) {
+        this.comments = comments;
     }
 
     public void setCategories(List<Category> categories) {
@@ -112,8 +109,8 @@ public class New implements Serializable {
         this.image = image;
     }
 
-    public List<Comment> getComment() {
-        return comment;
+    public List<Comment> getComments() {
+        return comments;
     }
 
     public List<Category> getCategories() {

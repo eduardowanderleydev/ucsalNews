@@ -1,6 +1,6 @@
 package br.ucsal.ucsalnews.entity;
 
-import br.ucsal.ucsalnews.dto.CategoryDTO;
+import br.ucsal.ucsalnews.dto.request.CategoryDTORequest;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -24,7 +24,7 @@ public class Category {
         this.name = name;
     }
 
-    public Category(CategoryDTO obj) {
+    public Category(CategoryDTORequest obj) {
         this.id = obj.getId();
         this.name = obj.getName();
     }

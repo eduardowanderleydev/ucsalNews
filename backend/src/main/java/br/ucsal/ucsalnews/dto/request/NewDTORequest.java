@@ -1,6 +1,5 @@
 package br.ucsal.ucsalnews.dto.request;
 
-import br.ucsal.ucsalnews.dto.CategoryDTO;
 import br.ucsal.ucsalnews.entity.New;
 
 import javax.validation.constraints.NotEmpty;
@@ -11,9 +10,7 @@ import java.util.List;
 public class NewDTORequest implements Serializable {
     private static final long serialVersionUID = 1L;
 
-    private Long id; // TODO is it really necessary ?
-
-    private String date; // TODO is it really necessary ?
+    private Long id;
 
     @NotEmpty(message = "Title cannot be empty")
     @NotNull
@@ -28,14 +25,13 @@ public class NewDTORequest implements Serializable {
     @NotNull
     private Long author_id;
 
-    private List<CategoryDTO> categories;
+    private List<CategoryDTORequest> categories;
 
     public NewDTORequest() {
     }
 
     public NewDTORequest(New obj) {
         this.id = obj.getId();
-        this.date = obj.getDate().toString();
         this.title = obj.getTitle();
         this.content = obj.getContent();
         this.image = obj.getImage();
@@ -48,10 +44,6 @@ public class NewDTORequest implements Serializable {
 
     public void setId(Long id) {
         this.id = id;
-    }
-
-    public String getDate() {
-        return date;
     }
 
     public String getTitle() {
@@ -78,10 +70,6 @@ public class NewDTORequest implements Serializable {
         this.image = image;
     }
 
-    public void setDate(String date) {
-        this.date = date;
-    }
-
     public Long getAuthor_id() {
         return author_id;
     }
@@ -90,11 +78,11 @@ public class NewDTORequest implements Serializable {
         this.author_id = author_id;
     }
 
-    public List<CategoryDTO> getCategories() {
+    public List<CategoryDTORequest> getCategories() {
         return categories;
     }
 
-    public void setCategories(List<CategoryDTO> categories) {
+    public void setCategories(List<CategoryDTORequest> categories) {
         this.categories = categories;
     }
 

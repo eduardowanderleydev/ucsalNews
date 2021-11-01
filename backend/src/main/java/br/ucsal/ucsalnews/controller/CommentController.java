@@ -1,6 +1,6 @@
 package br.ucsal.ucsalnews.controller;
 
-import br.ucsal.ucsalnews.dto.CommentDTO;
+import br.ucsal.ucsalnews.dto.request.CommentDTORequest;
 import br.ucsal.ucsalnews.entity.Comment;
 import br.ucsal.ucsalnews.service.ICommentService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,13 +21,13 @@ public class CommentController {
     ICommentService service;
 
     @PostMapping
-    public ResponseEntity insert(@Valid @RequestBody CommentDTO dto) {
+    public ResponseEntity insert(@Valid @RequestBody CommentDTORequest dto) {
         URI uri = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}").buildAndExpand(dto.getId()).toUri();//pega a uri no caso o request, pega o id da resposta do meu request e retorna o 201 de criado com o id
         return ResponseEntity.created(uri).body(service.insert(dto));
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity update(@Valid @PathVariable Long id, @RequestBody CommentDTO dto) {
+    public ResponseEntity update(@Valid @PathVariable Long id, @RequestBody CommentDTORequest dto) {
         return ResponseEntity.ok().body(service.update(id, dto));
     }
 
@@ -40,13 +40,14 @@ public class CommentController {
     @GetMapping
     public ResponseEntity findAll() {
         List<Comment> list = service.findAll();
-        List<CommentDTO> listDto = list.stream().map(obj -> new CommentDTO(obj)).collect(Collectors.toList());
+        List<CommentDTORequest> listDto = list.stream().map(obj -> new CommentDTORequest(obj)).collect(Collectors.toList());
         return ResponseEntity.ok().body(listDto);
     }
 
     @GetMapping("/{id}")
     public ResponseEntity findById(@PathVariable Long id) {
-        return ResponseEntity.ok().body(service.findById(id));
+        Comment commentFound = service.findById(id);
+        return ResponseEntity.ok().body(new CommentDTORequest(commentFound));
     }
 
 }

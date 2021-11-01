@@ -1,7 +1,7 @@
 package br.ucsal.ucsalnews.service;
 
 
-import br.ucsal.ucsalnews.dto.CommentDTO;
+import br.ucsal.ucsalnews.dto.request.CommentDTORequest;
 import br.ucsal.ucsalnews.entity.Comment;
 
 import java.util.List;
@@ -9,9 +9,9 @@ import java.util.List;
 
 public interface ICommentService {
 
-    CommentDTO insert(CommentDTO dto);
+    CommentDTORequest insert(CommentDTORequest dto);
 
-    CommentDTO update(Long id, CommentDTO dto);
+    CommentDTORequest update(Long id, CommentDTORequest dto);
 
     void delete(Long id);
 
