@@ -1,10 +1,13 @@
 package br.ucsal.ucsalnews.service;
 
+import java.util.List;
+
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
+
 import br.ucsal.ucsalnews.dto.request.NewDTORequest;
 import br.ucsal.ucsalnews.dto.response.NewDTOResponse;
 import br.ucsal.ucsalnews.entity.New;
-
-import java.util.List;
 
 public interface INewService {
 
@@ -17,4 +20,6 @@ public interface INewService {
     New findById(long id);
 
     List<New> findAll();
+    
+    Page<New> findPage(Pageable pageable);
 }
