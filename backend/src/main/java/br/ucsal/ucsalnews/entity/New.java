@@ -1,7 +1,6 @@
 package br.ucsal.ucsalnews.entity;
 
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import javax.persistence.*;
 import java.io.Serializable;
@@ -25,11 +24,11 @@ public class New implements Serializable {
     @JoinColumn(name = "user_id")
     private User author;
 
-    @JsonIgnore
+
     @OneToMany(cascade = CascadeType.ALL)
     private List<Comment> comment = new ArrayList<>();
 
-    @JsonIgnore
+
     @ManyToMany()
     private List<Category> categories = new ArrayList<>();
 
