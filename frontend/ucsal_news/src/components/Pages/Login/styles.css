@@ -23,12 +23,6 @@ body{
 	background-color: #ffffff;
 }
 
-.picture{
-	float: right;
-	width: 520px;
-	height: 700px;
-}
-
 .login-box h2{
 	font-size: 2em;
 	margin-top: 100px;
@@ -72,3 +66,4 @@ button {
 	transition: 0.5s;
 	letter-spacing: 2px;
 }
+
