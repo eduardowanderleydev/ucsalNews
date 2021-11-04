@@ -1,3 +1,3 @@
 import Home from './presentational'
 
-export default Home
+export default Home;

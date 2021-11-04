@@ -26,6 +26,7 @@ function login() {
 
                     <div>
                         <button onClick={() => {history.push('/Home')}} className="submit">Sign In</button>
+                        <button onClick={() => {history.push('/SignUp')}} className="submit">Sign Up</button>
                     </div>
                 </form>
             </div>
