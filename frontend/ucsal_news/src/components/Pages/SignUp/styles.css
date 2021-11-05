@@ -12,6 +12,12 @@ input[type=text]:focus, input[type=password]:focus {
   outline: none;
 }
 
+.error-message {
+  padding-bottom: 15px;
+  font-weight: 700;
+  color: #E43B17;
+}
+
 hr {
   border: 1px solid #f1f1f1;
   margin-bottom: 25px;
