@@ -18,6 +18,20 @@ input[type=text]:focus, input[type=password]:focus {
   color: #E43B17;
 }
 
+@media (max-width:760px) {
+  .container {
+    position: relative;
+  }
+  .signup-title {
+    position: absolute;
+    margin-bottom: 600px;
+  }
+  .signup-subtitle {
+    position: absolute;
+    margin-bottom: 500px;
+  }
+}
+
 hr {
   border: 1px solid #f1f1f1;
   margin-bottom: 25px;
