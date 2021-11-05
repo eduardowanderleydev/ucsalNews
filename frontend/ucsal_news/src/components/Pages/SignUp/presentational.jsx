@@ -1,42 +1,40 @@
 import React from 'react'
 import './styles.css'
+import {useHistory} from 'react-router-dom'
 
-function signup() {
+function Signup() {
+
+    const history = useHistory();
+
     return(
         <div>
-            <form>
-                <h3>Sign Up</h3>
+        <div className="container">
+        <h1>Sign Up</h1>
+        <p>Please fill in this form to create an account.</p>
+        <hr/>
 
-                <div className="form-group">
-                    <label>First name</label>
-                    <input type="text" className="form-control" placeholder="First name" />
-                </div>
+        <label for="email"><b>Email</b></label>
+        <input 
+        type="text" 
+        placeholder="Enter Email" 
+        name="email" />
 
-                <div className="form-group">
-                    <label>Last name</label>
-                    <input type="text" className="form-control" placeholder="Last name" />
-                </div>
+        <label for="email"><b>Username</b></label>
+        <input type="text" placeholder="Enter Username" name="email" required/>
 
-                <div className="form-group">
-                    <label>Email address</label>
-                    <input type="email" className="form-control" placeholder="Enter email" />
-                </div>
+        <label for="psw"><b>Password</b></label>
+        <input type="password" placeholder="Enter Password" name="psw" required/>
 
-                <div className="form-group">
-                    <label>Password</label>
-                    <input type="password" className="form-control" placeholder="Enter password" />
-                </div>
+        <label for="psw-repeat"><b>Repeat Password</b></label>
+        <input type="password" placeholder="Repeat Password" name="psw-repeat" required/>
 
-                <button 
-                type="submit" 
-                className="btn btn-primary btn-block"
-                >Sign Up</button>
-                <p className="forgot-password text-right">
-                    Already registered <a href="#">sign in?</a>
-                </p>
-            </form>
+        <div className="clearfix">
+        <button type="button" className="cancelbtn">Cancel</button>
+        <button type="submit" className="signupbtn"onClick={() => {history.push('/')}} >Sign Up</button>
+        </div>
+    </div>
         </div>
     )
 }
 
-export default signup;
+export default Signup;

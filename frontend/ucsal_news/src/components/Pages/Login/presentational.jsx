@@ -24,7 +24,7 @@ function login() {
                         <input type="password" placeholder="Password" />
                     </div>
 
-                    <div>
+                    <div className="buttonContainer">
                         <button onClick={() => {history.push('/Home')}} className="submit">Sign In</button>
                         <button onClick={() => {history.push('/SignUp')}} className="submit">Sign Up</button>
                     </div>
