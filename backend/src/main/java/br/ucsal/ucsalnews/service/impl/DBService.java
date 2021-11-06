@@ -1,5 +1,6 @@
 package br.ucsal.ucsalnews.service.impl;
 
+import br.ucsal.ucsalnews.config.SecurityConfig;
 import br.ucsal.ucsalnews.entity.Category;
 import br.ucsal.ucsalnews.entity.Comment;
 import br.ucsal.ucsalnews.entity.New;
@@ -31,11 +32,17 @@ public class DBService {
     @Autowired
     UserRepository userRepository;
 
+    @Autowired
+    SecurityConfig encoder;
+
 
     public void instantiateTestDatabase() {
 
         User user = new User(null, "nome", "userName", "nome@email.com", "senha", Role.USER);
         User user2 = new User(null, "nome2", "userName2", "nome2@email.com", "senha2", Role.ADMIN);
+
+        user.setPassword(encoder.getPasswordEncoder().encode(user.getPassword()));
+        user2.setPassword(encoder.getPasswordEncoder().encode(user2.getPassword()));
 
         New news = new New(null, "title", "Conteúdo", "image", user2);
         New news2 = new New(null, "title2", "Conteúdo2", "image2", user);

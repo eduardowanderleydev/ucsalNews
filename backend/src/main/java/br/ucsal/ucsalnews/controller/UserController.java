@@ -1,5 +1,6 @@
 package br.ucsal.ucsalnews.controller;
 
+import br.ucsal.ucsalnews.config.SecurityConfig;
 import br.ucsal.ucsalnews.dto.request.UserDTORequest;
 import br.ucsal.ucsalnews.dto.response.UserDTOResponse;
 import br.ucsal.ucsalnews.entity.User;
@@ -21,6 +22,10 @@ public class UserController {
     @Autowired
     IUserService service;
 
+    @Autowired
+    SecurityConfig securityConfig;
+
+
     @GetMapping("/{id}")
     public ResponseEntity findById(@PathVariable Long id) {
         User userFound = service.findById(id);
@@ -36,6 +41,7 @@ public class UserController {
 
     @PostMapping
     public ResponseEntity insert(@Valid @RequestBody UserDTORequest dto) {
+        dto.setPassword(securityConfig.getPasswordEncoder().encode(dto.getPassword()));
         URI uri = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}").buildAndExpand(dto.getId()).toUri();
         return ResponseEntity.created(uri).body(service.insert(dto));
     }
