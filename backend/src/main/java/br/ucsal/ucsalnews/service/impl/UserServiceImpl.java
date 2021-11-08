@@ -1,6 +1,5 @@
 package br.ucsal.ucsalnews.service.impl;
 
-import br.ucsal.ucsalnews.security.SecurityConfig;
 import br.ucsal.ucsalnews.dto.request.UserDTORequest;
 import br.ucsal.ucsalnews.dto.response.UserDTOResponse;
 import br.ucsal.ucsalnews.entity.User;
@@ -8,6 +7,7 @@ import br.ucsal.ucsalnews.exception.AuthenticationErrorException;
 import br.ucsal.ucsalnews.exception.BusinessRuleException;
 import br.ucsal.ucsalnews.exception.ObjectNotFoundException;
 import br.ucsal.ucsalnews.repository.UserRepository;
+import br.ucsal.ucsalnews.security.SecurityConfig;
 import br.ucsal.ucsalnews.service.IUserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -23,7 +23,6 @@ public class UserServiceImpl implements IUserService {
     private UserRepository repository;
     @Autowired
     private SecurityConfig encoder;
-
 
     @Override
     public UserDTOResponse insert(UserDTORequest dto) {

@@ -22,4 +22,5 @@ public interface IUserService {
 
     UserDTOResponse autenticar(String email, String senha);
 
+
 }
