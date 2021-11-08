@@ -1,5 +1,6 @@
 package br.ucsal.ucsalnews.service.impl;
 
+import br.ucsal.ucsalnews.config.SecurityConfig;
 import br.ucsal.ucsalnews.dto.request.UserDTORequest;
 import br.ucsal.ucsalnews.dto.response.UserDTOResponse;
 import br.ucsal.ucsalnews.entity.User;
@@ -20,6 +21,9 @@ public class UserServiceImpl implements IUserService {
 
     @Autowired
     private UserRepository repository;
+    @Autowired
+    private SecurityConfig encoder;
+
 
     @Override
     public UserDTOResponse insert(UserDTORequest dto) {
@@ -67,10 +71,12 @@ public class UserServiceImpl implements IUserService {
     @Override
     public UserDTOResponse autenticar(String email, String senha) {
         Optional<User> user = repository.findByEmail(email);
+        boolean valid = encoder.getPasswordEncoder().matches(senha, user.get().getPassword());
+
         if (!user.isPresent()) {
             throw new AuthenticationErrorException("Usuário não cadastrado para o email informado!");
         }
-        if (!user.get().getPassword().equals(senha)) {
+        if (!valid) {
             throw new AuthenticationErrorException("Senha inválida!");
         }
         return new UserDTOResponse(user.get());
