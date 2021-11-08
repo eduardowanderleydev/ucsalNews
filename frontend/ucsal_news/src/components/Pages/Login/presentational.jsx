@@ -25,7 +25,7 @@ function login() {
                     </div>
 
                     <div className="buttonContainer">
-                        <button onClick={() => {history.push('/Home')}} className="sign-in">Sign In</button>
+                        <button onClick={() => {history.push('/')}} className="sign-in">Sign In</button>
                         <button onClick={() => {history.push('/SignUp')}} className="sign-up">Sign Up</button>
                     </div>
                 </form>

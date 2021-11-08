@@ -39,7 +39,7 @@ function NotFound() {
             </p>
           </div>
           <div className="error__nav e-nav">
-            <button onClick={() => {history.push("/")}} className="e-nav__link"></button>
+            <button onClick={() => {history.push("/Login")}} className="e-nav__link"></button>
           </div>
         </div>
       </section>
