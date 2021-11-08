@@ -1,4 +1,4 @@
-package br.ucsal.ucsalnews.config;
+package br.ucsal.ucsalnews.security;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;

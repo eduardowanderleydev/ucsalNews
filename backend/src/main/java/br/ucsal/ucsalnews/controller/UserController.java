@@ -1,6 +1,6 @@
 package br.ucsal.ucsalnews.controller;
 
-import br.ucsal.ucsalnews.config.SecurityConfig;
+import br.ucsal.ucsalnews.security.SecurityConfig;
 import br.ucsal.ucsalnews.dto.request.UserDTORequest;
 import br.ucsal.ucsalnews.dto.response.UserDTOResponse;
 import br.ucsal.ucsalnews.entity.User;

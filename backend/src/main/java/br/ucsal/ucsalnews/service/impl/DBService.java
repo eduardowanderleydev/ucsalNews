@@ -1,6 +1,6 @@
 package br.ucsal.ucsalnews.service.impl;
 
-import br.ucsal.ucsalnews.config.SecurityConfig;
+import br.ucsal.ucsalnews.security.SecurityConfig;
 import br.ucsal.ucsalnews.entity.Category;
 import br.ucsal.ucsalnews.entity.Comment;
 import br.ucsal.ucsalnews.entity.New;
