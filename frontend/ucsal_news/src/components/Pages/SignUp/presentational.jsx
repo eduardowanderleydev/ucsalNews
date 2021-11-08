@@ -34,25 +34,25 @@ function Signup() {
 
         <div>
             <label><b>Email</b></label>
-            <input type="text" placeholder="Enter Email" name="email" {...register("email")} />
+            <input className="input-signup" type="text" placeholder="Enter Email" name="email" {...register("email")} />
             <p className="error-message">{errors.email?.message}</p>
         </div>
 
         <div>
             <label><b>Username</b></label>
-            <input type="text" placeholder="Enter Username" name="username" {...register("username")} />
+            <input className="input-signup" type="text" placeholder="Enter Username" name="username" {...register("username")} />
             <p className="error-message">{errors.username?.message}</p>
         </div>
         
         <div>
             <label><b>Password</b></label>
-            <input type="password" placeholder="Enter Password" name="password" {...register("password")} />
+            <input className="input-signup" type="password" placeholder="Enter Password" name="password" {...register("password")} />
             <p className="error-message">{errors.password?.message}</p>
         </div>
        
         <div>
             <label><b>Repeat Password</b></label>
-            <input type="password" placeholder="Repeat Password" name="confirmPassword" {...register("confirmPassword")} />
+            <input className="input-signup" type="password" placeholder="Repeat Password" name="confirmPassword" {...register("confirmPassword")} />
             <p className="error-message">{errors.confirmPassword?.message}</p>
         </div>
         

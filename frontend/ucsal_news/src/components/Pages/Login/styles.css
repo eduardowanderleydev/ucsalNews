@@ -38,13 +38,12 @@ body{
 	letter-spacing: 5px;
 }
 
-.txt{
+.maintitle {
 	font-size: 20px;
 	bottom: 20px;
-
 }
 
-input{
+.input-login {
 	height: 30px;
 	width: 60%;
 	margin: 10px;
@@ -54,13 +53,9 @@ input{
 	margin-top: 20px;
 }
 
-button {
+.sign-in, .sign-up {
 	height: 30px;
 	border-radius: 8px;
-}
-
-
-.submit{
 	background-color: #e63188;
 	text-transform: uppercase;
 	color: #fff;
@@ -70,7 +65,7 @@ button {
 	width: 28%;
 }
 
-.submit:hover{
+.sign-in:hover, .sign-up:hover {
 	background-color: #19a1ad;
 	transition: 0.5s;
 	letter-spacing: 2px;
@@ -80,5 +75,6 @@ button {
 	display: flex;
 	align-items: center;
 	justify-content: space-around;
+	padding-top: 20px;
 }
 
