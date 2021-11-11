@@ -1,7 +1,6 @@
-.back {
-    height: 100vh;
-    background-repeat: no-repeat;
+.grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-template-rows: 50px 200px 50px;
 }
-.ola {
-    background-color: green;
-}
+
