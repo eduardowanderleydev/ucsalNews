@@ -1,3 +1,5 @@
-.grid-topsidebar {
-  display: flex;
+.main_content {
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }

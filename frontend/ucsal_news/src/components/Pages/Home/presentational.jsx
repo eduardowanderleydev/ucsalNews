@@ -7,7 +7,7 @@ import "./styles.css";
 
 function Home() {
   return (
-    <div className="grid">
+    <div className="container_components">
       <AsideNav />
       <MainContent />
     </div>

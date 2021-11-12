@@ -1,14 +1,15 @@
 import React from 'react'
 
+import TodoList from './TodoList/TodoList';
+
+
 import './styles.css'
 
 function MainContent() {
     return (
-        <div className="grid-topsidebar">
-            <div>top</div>
-            <div>top</div>
-            <div>top</div>
-        </div>
+        <div className="main_content">
+            <TodoList/>
+          </div> 
     )
 }
 

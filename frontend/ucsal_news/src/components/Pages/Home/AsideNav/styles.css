@@ -9,7 +9,8 @@
     bottom: 0;
     z-index: 100;
     width: 300px;
-    overflow-y: visible;    
+    overflow-y: visible;
+    margin-top: 150px;    
 }
 
 .tm-header-wrapper {
