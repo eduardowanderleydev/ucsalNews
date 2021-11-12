@@ -330,3 +330,9 @@ a:hover figcaption { color: #056767; }
 .tm-person { max-width: 430px; }
 .tm-line-height-short { line-height: 1.8; }
 
+
+@media (max-width:760px) {
+    .tm-header {
+        display: none;
+    }    
+}
