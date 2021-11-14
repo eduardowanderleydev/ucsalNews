@@ -9,7 +9,7 @@ public class UserBuilder {
     private static final String DEFAULT_USERNAME = "jubileu2021";
     private static final String DEFAULT_EMAIL = "jubileu@gmail.com";
     private static final String DEFAULT_PASSWORD = "1234feijao4321arroz";
-    private static final Role DEFAULT_ROLE = Role.USER;
+    private static final Role DEFAULT_ROLE = Role.CLIENTE;
 
     private String name = DEFAULT_NAME;
     private String userName = DEFAULT_USERNAME;

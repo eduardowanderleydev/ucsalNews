@@ -38,7 +38,7 @@ public class DBService {
 
     public void instantiateTestDatabase() {
 
-        User user = new User(null, "nome", "userName", "nome@email.com", "senha", Role.USER);
+        User user = new User(null, "nome", "userName", "nome@email.com", "senha", Role.CLIENTE);
         User user2 = new User(null, "nome2", "userName2", "nome2@email.com", "senha2", Role.ADMIN);
 
         user.setPassword(encoder.getPasswordEncoder().encode(user.getPassword()));

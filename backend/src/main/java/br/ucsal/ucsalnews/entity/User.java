@@ -28,7 +28,7 @@ public class User {
 
 
     public User() {
-        this.role = Role.USER;
+        this.role = Role.CLIENTE;
     }
 
     public User(Long id, String name, String username, String email, String password, List<Comment> comment) {
@@ -38,7 +38,7 @@ public class User {
         this.email = email;
         this.password = password;
         this.comment = comment;
-        this.role = Role.USER;
+        this.role = Role.CLIENTE;
     }
 
     public User(Long id, String name, String username, String email, String password, Role role) {

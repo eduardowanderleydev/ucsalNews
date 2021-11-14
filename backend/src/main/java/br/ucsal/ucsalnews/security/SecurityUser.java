@@ -1,25 +1,22 @@
 package br.ucsal.ucsalnews.security;
 
+import br.ucsal.ucsalnews.entity.User;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
 import java.util.Collection;
+import java.util.Optional;
 
 public class SecurityUser implements UserDetails {
 
-    private Long id;
-    private String senha;
-    private String email;
+    private final Optional<User> user;
 
 
-    public SecurityUser() {
+    public SecurityUser(Optional<User> user) {
+        this.user = user;
     }
 
-    public SecurityUser(Long id, String senha, String email) {
-        this.id = id;
-        this.senha = senha;
-        this.email = email;
-    }
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
@@ -29,12 +26,12 @@ public class SecurityUser implements UserDetails {
     @Override
     public String getPassword() {
 
-        return email;
+        return user.orElse(new User()).getPassword();
     }
 
     @Override
     public String getUsername() {
-        return null;
+        return user.orElse(new User()).getUsername();
     }
 
     @Override
