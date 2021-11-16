@@ -44,12 +44,8 @@ function TodoList() {
           {taskList.map((item) => (
             <div className="card">
               <div className="post_content">
-                <ul>
+                <ul className="card_info_container">
                   <li className="card_title">{item.Name}</li>
-                  <div class="cart_bar">
-                    <div class="emptybar"></div>
-                    <div class="filledbar"></div>
-                  </div>
                   <li className="card_description">{item.Description}</li>
                 </ul>
               </div>

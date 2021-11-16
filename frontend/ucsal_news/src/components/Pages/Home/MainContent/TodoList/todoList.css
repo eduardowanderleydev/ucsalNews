@@ -56,6 +56,10 @@
   border-radius: 10px;
 }
 
+.card_info_container {
+  overflow: hidden;
+}
+
 .post_container {
   display: flex;
   align-items: center;
@@ -88,9 +92,20 @@
 
 .card_title,
 .card_description {
-  color: #000000;
+  text-align: left;
+  padding: 10px;
+}
+
+.card_title {
+  color: #0CC;
   font-weight: 700;
-  font-size: 20px;
+  font-size: 27px;
+  margin-top: 20px;
+}
+
+.card_description {
+  color: #555;
+  margin: 20px 0 7px;
 }
 
 .post_content {
