@@ -45,7 +45,7 @@ body{
 
 .input-login {
 	height: 30px;
-	width: 60%;
+	width: 90%;
 	margin: 10px;
 	border-radius: 8px;
 	border: 0.3px solid;
@@ -69,6 +69,11 @@ body{
 	background-color: #19a1ad;
 	transition: 0.5s;
 	letter-spacing: 2px;
+}
+
+.Form-Error {
+	color: #e63188;
+	font-weight: 600;
 }
 
 .buttonContainer {

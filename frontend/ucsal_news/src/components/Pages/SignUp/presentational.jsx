@@ -6,8 +6,9 @@ import {useHistory} from 'react-router-dom';
 import { useForm } from 'react-hook-form';
 import * as yup from "yup";
 import { yupResolver } from '@hookform/resolvers/yup';
+import axios from 'axios'
 
-const validationForm = yup.object().shape({
+const validationSignUpForm = yup.object().shape({
     email: yup.string().required("Insira seu Email").email("Necessário um email válido"),
     username: yup.string().required("Insira seu Username").max(20, "O seu nome de usuário precisa ter menos que 20 caracteres"),
     password: yup.string().required("Insira uma Senha ").min(6, "A senha precisa de no mínimo 6 dígitos"),
@@ -19,7 +20,7 @@ function Signup() {
     const history = useHistory();
 
     const { register, handleSubmit, formState: { errors } } = useForm({
-        resolver: yupResolver(validationForm)
+        resolver: yupResolver(validationSignUpForm)
     })
     const onsubmit = data => console.log(data)
     

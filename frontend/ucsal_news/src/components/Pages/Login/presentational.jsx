@@ -1,38 +1,75 @@
-import React from 'react'
-import './styles.css'
-import {useHistory} from 'react-router-dom'
+import React from "react";
+import "./styles.css";
 
-function login() {
+import { ErrorMessage, Formik, Form, Field } from "formik";
+import * as yup from "yup";
 
-    // eslint-disable-next-line react-hooks/rules-of-hooks
-    const history = useHistory();
+import axios from "axios";
 
-    return (
-        <div className="login-back">
+const login = () => {
+  const handleSubmit = (values) => {
+    axios
+      .post("http://localhost:8080/user/autenticar", values)
+      .then((resp) => console.log(resp));
+  };
 
-        
-        <div className='container'>
-            <div className="login-box">
-                <h2>Welcome</h2>
-                <h2 className="maintitle">LOGIN</h2>
-                <form>
-                    <div>
-                        <input type="text" placeholder="Username" className="input-login"/>
-                    </div>
+  const validationsSignIn = yup.object().shape({
+    userName: yup.string().required("Insira seu nome de usuário"),
+    password: yup.string().required("Insira sua senha"),
+  });
 
-                    <div>
-                        <input type="password" placeholder="Password" className="input-login" />
-                    </div>
+  return (
+    <div className="login-back">
+      <div className="container">
+        <div className="login-box">
+          <h2>Welcome</h2>
+          <h2 className="maintitle">LOGIN</h2>
 
-                    <div className="buttonContainer">
-                        <button onClick={() => {history.push('/')}} className="sign-in">Sign In</button>
-                        <button onClick={() => {history.push('/SignUp')}} className="sign-up">Sign Up</button>
-                    </div>
-                </form>
-            </div>
+          <Formik
+            initialValues={{}}
+            onSubmit={handleSubmit}
+            validationSchema={validationsSignIn}
+          >
+            <Form className="Form">
+              <div className="Form-Group">
+                <Field
+                  placeholder="Usuário"
+                  name="userName"
+                  className="input-login"
+                />
+                <ErrorMessage
+                  component="span"
+                  name="userName"
+                  className="Form-Error"
+                />
+              </div>
+
+              <div className="Form-Group">
+                <Field
+                  placeholder="Senha"
+                  name="password"
+                  className="input-login"
+                />
+                <ErrorMessage
+                  component="span"
+                  name="password"
+                  className="Form-Error"
+                />
+              </div>
+
+              <div className="buttonContainer">
+                <button className="sign-up">Sign up</button>
+
+                <button className="sign-in" type="submit">
+                  Sign in
+                </button>
+              </div>
+            </Form>
+          </Formik>
         </div>
+      </div>
     </div>
-    )
-}
+  );
+};
 
 export default login;
