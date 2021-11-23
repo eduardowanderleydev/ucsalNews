@@ -22,7 +22,16 @@ function Signup() {
     const { register, handleSubmit, formState: { errors } } = useForm({
         resolver: yupResolver(validationSignUpForm)
     })
-    const onsubmit = data => console.log(data)
+    const onsubmit = values => {
+        axios.post('http://localhost:8080/user/autenticar', values)
+        .then(resp => {
+            const {data} = resp
+            if(data) {
+                localStorage.setItem('app-token', data)
+                history.push('/Login')
+            }
+        })
+    }
     
     return(
         <div>
