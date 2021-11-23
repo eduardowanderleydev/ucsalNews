@@ -15,7 +15,6 @@ import java.util.stream.Collectors;
 
 @RestController
 @RequestMapping("/category")
-@CrossOrigin
 public class CategoryController {
 
     @Autowired

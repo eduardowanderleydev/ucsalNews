@@ -21,7 +21,6 @@ import br.ucsal.ucsalnews.service.INewService;
 
 @RestController
 @RequestMapping("/news")
-@CrossOrigin
 public class NewController {
 
     @Autowired
