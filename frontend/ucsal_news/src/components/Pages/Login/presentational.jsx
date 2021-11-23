@@ -6,6 +6,9 @@ import * as yup from "yup";
 
 import axios from "axios";
 
+import {useHistory} from 'react-router-dom';
+
+
 const login = () => {
   const handleSubmit = (values) => {
     axios
@@ -17,6 +20,9 @@ const login = () => {
     userName: yup.string().required("Insira seu nome de usuário"),
     password: yup.string().required("Insira sua senha"),
   });
+
+  // eslint-disable-next-line react-hooks/rules-of-hooks
+  const history = useHistory();
 
   return (
     <div className="login-back">
@@ -58,7 +64,9 @@ const login = () => {
               </div>
 
               <div className="buttonContainer">
-                <button className="sign-up">Sign up</button>
+                <button className="sign-up" onClick={()=>{
+                  history.push("/SignUp")
+                }}>Sign up</button>
 
                 <button className="sign-in" type="submit">
                   Sign in
