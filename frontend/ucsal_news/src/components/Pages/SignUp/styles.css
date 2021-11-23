@@ -1,3 +1,12 @@
+.container-signup {
+  width: 1050px;
+	background-color: rgba(25,220,250,0.8);
+	box-shadow: rgba(0, 0, 0, 0.07) 0px 1px 2px, rgba(0, 0, 0, 0.07) 0px 2px 4px, rgba(0, 0, 0, 0.07) 0px 4px 8px, rgba(0, 0, 0, 0.07) 0px 8px 16px, rgba(0, 0, 0, 0.07) 0px 16px 32px, rgba(0, 0, 0, 0.07) 0px 32px 64px;	border-radius: 10px;
+	margin: 0 auto;
+	margin-top: 110px;
+	text-align: center;
+}
+
 .input-signup {
   width: 100%;
   padding: 15px;
@@ -50,14 +59,16 @@ hr {
 
 /* Float cancel and signup buttons and add an equal width */
 .cancelbtn, .signupbtn {
-  float: left;
-  width: 50%;
+  width: 35%;
   height: 30px;
+  margin-right: 20px;
+  margin-left: 20px;
+  margin-bottom: 30px;
 	border-radius: 8px;
   color: white;
   border: none;
   cursor: pointer;
-  opacity: 0.9;
+  opacity: 0.8;
 }
 
 .cancelbtn:hover, .signupbtn:hover {

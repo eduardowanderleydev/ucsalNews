@@ -6,19 +6,22 @@ import * as yup from "yup";
 
 import axios from "axios";
 
-import {useHistory} from 'react-router-dom';
-
+import { useHistory } from "react-router-dom";
 
 const login = () => {
   const handleSubmit = (values) => {
-    axios
-      .post("http://localhost:8080/user/autenticar", values)
-      .then((resp) => console.log(resp));
+    axios.post("http://localhost:8080/user/autenticar", values).then((resp) => {
+      const { data } = resp;
+      if (data) {
+        localStorage.setItem("app-token", data);
+        history.push("/");
+      }
+    });
   };
 
   const validationsSignIn = yup.object().shape({
-    userName: yup.string().required("Insira seu nome de usuário"),
-    password: yup.string().required("Insira sua senha"),
+    email: yup.string().required('Insira seu email').email('informe um email válido'),
+    password: yup.string().required("Insira sua senha")
   });
 
   // eslint-disable-next-line react-hooks/rules-of-hooks
@@ -37,18 +40,20 @@ const login = () => {
             validationSchema={validationsSignIn}
           >
             <Form className="Form">
+    
               <div className="Form-Group">
                 <Field
-                  placeholder="Usuário"
-                  name="userName"
+                  placeholder="email"
+                  name="email"
                   className="input-login"
                 />
                 <ErrorMessage
                   component="span"
-                  name="userName"
+                  name="email"
                   className="Form-Error"
                 />
               </div>
+
 
               <div className="Form-Group">
                 <Field
@@ -64,9 +69,14 @@ const login = () => {
               </div>
 
               <div className="buttonContainer">
-                <button className="sign-up" onClick={()=>{
-                  history.push("/SignUp")
-                }}>Sign up</button>
+                <button
+                  className="sign-up"
+                  onClick={() => {
+                    history.push("/SignUp");
+                  }}
+                >
+                  Sign up
+                </button>
 
                 <button className="sign-in" type="submit">
                   Sign in
