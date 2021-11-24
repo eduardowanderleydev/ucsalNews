@@ -9,6 +9,7 @@ import br.ucsal.ucsalnews.repository.CategoryRepository;
 import br.ucsal.ucsalnews.repository.CommentRepository;
 import br.ucsal.ucsalnews.repository.NewRepository;
 import br.ucsal.ucsalnews.repository.UserRepository;
+import br.ucsal.ucsalnews.security.SecurityConfig;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -31,11 +32,17 @@ public class DBService {
     @Autowired
     UserRepository userRepository;
 
+    @Autowired
+    SecurityConfig encoder;
+
 
     public void instantiateTestDatabase() {
 
         User user = new User(null, "nome", "userName", "nome@email.com", "senha", Role.USER);
         User user2 = new User(null, "nome2", "userName2", "nome2@email.com", "senha2", Role.ADMIN);
+
+        user.setPassword(encoder.getPasswordEncoder().encode(user.getPassword()));
+        user2.setPassword(encoder.getPasswordEncoder().encode(user2.getPassword()));
 
         New news = new New(null, "title", "Conteúdo", "image", user2);
         New news2 = new New(null, "title2", "Conteúdo2", "image2", user);

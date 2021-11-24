@@ -7,6 +7,7 @@ import br.ucsal.ucsalnews.exception.AuthenticationErrorException;
 import br.ucsal.ucsalnews.exception.BusinessRuleException;
 import br.ucsal.ucsalnews.exception.ObjectNotFoundException;
 import br.ucsal.ucsalnews.repository.UserRepository;
+import br.ucsal.ucsalnews.security.SecurityConfig;
 import br.ucsal.ucsalnews.service.IUserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -20,6 +21,10 @@ public class UserServiceImpl implements IUserService {
 
     @Autowired
     private UserRepository repository;
+
+    @Autowired
+    private SecurityConfig encoder;
+
 
     @Override
     public UserDTOResponse insert(UserDTORequest dto) {
@@ -67,10 +72,12 @@ public class UserServiceImpl implements IUserService {
     @Override
     public UserDTOResponse autenticar(String email, String senha) {
         Optional<User> user = repository.findByEmail(email);
+        boolean valid = encoder.getPasswordEncoder().matches(senha, user.get().getPassword());
+
         if (!user.isPresent()) {
             throw new AuthenticationErrorException("Usuário não cadastrado para o email informado!");
         }
-        if (!user.get().getPassword().equals(senha)) {
+        if (!valid) {
             throw new AuthenticationErrorException("Senha inválida!");
         }
         return new UserDTOResponse(user.get());
