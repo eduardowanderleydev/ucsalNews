@@ -9,19 +9,25 @@ import axios from "axios";
 import { useHistory } from "react-router-dom";
 
 const login = () => {
-    const handleSubmit = (values) => {
-      axios.post("http://localhost:8080/user/autenticar", values).then((resp) => {
-        const { data } = resp;
-        if (data) {
-          localStorage.setItem("app-token", data);
-          history.push("/");
-        }
-      });
-    };
+  const handleSubmit = (values) => {
+    axios.post("http://localhost:8080/user/autenticar", values).then((resp) => {
+      const { data } = resp;
+      if (data) {
+        localStorage.setItem("app-token", data);
+        history.push("/");
+      }
+    });
+  };
 
   const validationsSignIn = yup.object().shape({
-    email: yup.string().required('Insira seu email').email('informe um email válido'),
-    password: yup.string().required("Insira sua senha").min(6, "Senha precisa de no mínimo 6 dígitos"),
+    email: yup
+      .string()
+      .required("Insira seu email")
+      .email("informe um email válido"),
+    password: yup
+      .string()
+      .required("Insira sua senha")
+      .min(6, "Senha precisa de no mínimo 6 dígitos"),
   });
 
   // eslint-disable-next-line react-hooks/rules-of-hooks
@@ -40,7 +46,6 @@ const login = () => {
             validationSchema={validationsSignIn}
           >
             <Form className="Form">
-    
               <div className="Form-Group">
                 <Field
                   placeholder="email"
@@ -53,7 +58,6 @@ const login = () => {
                   className="Form-Error"
                 />
               </div>
-
 
               <div className="Form-Group">
                 <Field
