@@ -9,7 +9,7 @@ import java.io.Serializable;
 public class UserDTORequest implements Serializable {
     private static final long serialVersionUID = 1L;
 
-    private Long id; // TODO is it really necessary ?
+    private Long id;
 
     @NotEmpty(message = "Preenchimento obrigatório")
     @Length(min = 3, max = 80, message = "tamanho deve ser entre 3 e 80 caracteres")

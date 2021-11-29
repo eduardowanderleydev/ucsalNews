@@ -3,6 +3,7 @@ package br.ucsal.ucsalnews.controller;
 import br.ucsal.ucsalnews.dto.request.UserDTORequest;
 import br.ucsal.ucsalnews.dto.response.UserDTOResponse;
 import br.ucsal.ucsalnews.entity.User;
+import br.ucsal.ucsalnews.security.SecurityConfig;
 import br.ucsal.ucsalnews.service.IUserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -20,6 +21,8 @@ public class UserController {
 
     @Autowired
     IUserService service;
+    @Autowired
+    SecurityConfig encoder;
 
     @GetMapping("/{id}")
     public ResponseEntity findById(@PathVariable Long id) {
@@ -36,6 +39,7 @@ public class UserController {
 
     @PostMapping
     public ResponseEntity insert(@Valid @RequestBody UserDTORequest dto) {
+        dto.setPassword(encoder.getPasswordEncoder().encode(dto.getPassword()));
         URI uri = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}").buildAndExpand(dto.getId()).toUri();
         return ResponseEntity.created(uri).body(service.insert(dto));
     }

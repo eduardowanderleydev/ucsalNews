@@ -12,11 +12,14 @@ public class UserDTOResponse {
 
     private String email;
 
+    private String role;
+
     public UserDTOResponse(User user) {
         this.id = user.getId();
         this.name = user.getName();
         this.userName = user.getUsername();
         this.email = user.getEmail();
+        this.role = user.getRole().toString();
     }
 
     public Long getId() {
@@ -33,6 +36,14 @@ public class UserDTOResponse {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public String getRole() {
+        return role;
+    }
+
+    public void setRole(String role) {
+        this.role = role;
     }
 
     public String getUserName() {
