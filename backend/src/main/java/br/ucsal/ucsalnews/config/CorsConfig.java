@@ -13,12 +13,11 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 import java.util.Arrays;
 
 @Configuration
-public class CorsConfig implements WebMvcConfigurer {
+public class CorsConfig implements WebMvcConfigurer  {
 
     @Bean
     public CorsConfigurationSource corsConfigurationSource() {
         CorsConfiguration corsConfiguration = new CorsConfiguration();
-        //Liberando todas os dominios pra usar.. futuramente posso deixar so um ex: (www.meudominio.com.br)
         corsConfiguration.setAllowedOriginPatterns(Arrays.asList("*"));
         corsConfiguration.setAllowedMethods(Arrays.asList("POST", "GET", "PUT", "DELETE", "PATCH"));
         corsConfiguration.setAllowCredentials(true);
