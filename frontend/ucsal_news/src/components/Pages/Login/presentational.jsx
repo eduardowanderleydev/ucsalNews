@@ -35,7 +35,7 @@ const login = () => {
 
   return (
     <div className="login-back">
-      <div className="container">
+      <div className="container_login">
         <div className="login-box">
           <h2>Welcome</h2>
           <h2 className="maintitle">LOGIN</h2>
