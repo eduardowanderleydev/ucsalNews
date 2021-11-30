@@ -33,7 +33,7 @@ function TodoList() {
       <div className="todolist_container">
         <div className="todolist_content">
           <div>
-            <h3 className="todolist__title">UCSAL NEW</h3>
+            <div className="todolist__logo"></div>
             <button className="todolist_button" onClick={() => setModal(true)}>
               Create News
             </button>
@@ -42,7 +42,7 @@ function TodoList() {
         </div>
         <div className="post_container">
           {taskList.map((item) => (
-            <div className="card">
+            <div className="card_content">
               <div className="post_content">
                 <ul className="card_info_container">
                   <li className="card_title">{item.Name}</li>
