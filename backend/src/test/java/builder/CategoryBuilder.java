@@ -4,12 +4,12 @@ import br.ucsal.ucsalnews.entity.Category;
 
 public class CategoryBuilder {
 
-    private static final String Category_DEFAULT = "Some Category";
+    private static final String Category_DEFAULT = "Lorem Ipsum is simply dummy text";
 
 
     private String category = Category_DEFAULT;
 
-    public CategoryBuilder(){
+    private CategoryBuilder(){
 
     }
 
@@ -17,7 +17,7 @@ public class CategoryBuilder {
         return new CategoryBuilder();
     }
 
-    public CategoryBuilder withCategory(String category){
+    public CategoryBuilder withName(String category){
         this.category =category;
         return this;
     }
