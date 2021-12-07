@@ -8,7 +8,7 @@ function SocialFollow() {
   return (
     <div>
       <div className="social-container">
-        <h3>Social Follow</h3>
+        <h3>Dev Team</h3>
           <span className="member-team">Caio Macedo <span className="frufru">(Back-end Developer):</span></span>
           <div className="member-info-container">
           <a href="https://github.com/ccaiomacedo">
