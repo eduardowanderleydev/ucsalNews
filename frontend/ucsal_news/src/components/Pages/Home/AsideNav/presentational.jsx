@@ -1,5 +1,7 @@
 import React from 'react'
 
+import SocialFollow from '../../../Generic/Contact';
+
 import './styles.css'
 
 function AsideNav() {
@@ -14,31 +16,16 @@ function AsideNav() {
             <nav className="tm-nav" id="tm-nav">
               <ul>
                 <li className="tm-nav-item active">
-                  <a href="index.html" className="tm-nav-link">
+                  <span className="tm-nav-link">
                     <i className="fas fa-home"></i>
                     Blog Home
-                  </a>
-                </li>
-                <li className="tm-nav-item">
-                  <a href="post.html" className="tm-nav-link">
-                    <i className="fas fa-pen"></i>
-                    Single Post
-                  </a>
-                </li>
-                <li className="tm-nav-item">
-                  <a href="about.html" className="tm-nav-link">
-                    <i className="fas fa-users"></i>
-                    About Xtra
-                  </a>
-                </li>
-                <li className="tm-nav-item">
-                  <a href="contact.html" className="tm-nav-link">
-                    <i className="far fa-comments"></i>
-                    Contact Us
-                  </a>
+                  </span>
                 </li>
               </ul>
             </nav>
+            <div className="social-media-container">
+                <SocialFollow/>
+            </div>
           </div>
         </aside>
       </header>

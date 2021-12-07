@@ -1,6 +1,8 @@
 import React from "react";
 import "./styles.css";
 
+import Error from "../../Generic/Error";
+
 import { ErrorMessage, Formik, Form, Field } from "formik";
 import * as yup from "yup";
 
@@ -16,7 +18,11 @@ const login = () => {
         localStorage.setItem("app-token", data);
         history.push("/");
       }
-    });
+    })
+    .catch(() => {
+      <Error/>
+    })
+    ;
   };
 
   const validationsSignIn = yup.object().shape({
@@ -73,6 +79,10 @@ const login = () => {
               </div>
 
               <div className="buttonContainer">
+                <button className="sign-in" type="submit">
+                  Sign in
+                </button>
+
                 <button
                   className="sign-up"
                   onClick={() => {
@@ -80,10 +90,6 @@ const login = () => {
                   }}
                 >
                   Sign up
-                </button>
-
-                <button className="sign-in" type="submit">
-                  Sign in
                 </button>
               </div>
             </Form>

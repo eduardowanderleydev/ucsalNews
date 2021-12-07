@@ -1,0 +1,14 @@
+.error-alert {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  padding: 25px;
+  border: 1px solid gray;
+  border-radius: 3px;
+  margin: 10px;
+  font-size: 18px;
+
+  border-color: #e8273b;
+  color: #fff;
+  background-color: #ed5565;
+}
