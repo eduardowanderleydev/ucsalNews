@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useState} from "react";
 import "./styles.css";
 
 import Error from "../../Generic/Error";
@@ -10,17 +10,22 @@ import axios from "axios";
 
 import { useHistory } from "react-router-dom";
 
-const login = () => {
+function login () {
+
+  // eslint-disable-next-line react-hooks/rules-of-hooks
+  const [hasError, setHasError] = useState(false)
+
   const handleSubmit = (values) => {
     axios.post("http://localhost:8080/user/autenticar", values).then((resp) => {
       const { data } = resp;
       if (data) {
         localStorage.setItem("app-token", data);
         history.push("/");
+        setHasError(false)
       }
     })
     .catch(() => {
-      <Error/>
+      setHasError(true)
     })
     ;
   };
@@ -96,6 +101,7 @@ const login = () => {
           </Formik>
         </div>
       </div>
+      {hasError? <Error/> : null}
     </div>
   );
 };
