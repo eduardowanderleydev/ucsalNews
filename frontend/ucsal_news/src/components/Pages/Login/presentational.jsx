@@ -100,8 +100,9 @@ function login () {
             </Form>
           </Formik>
         </div>
+        {hasError? <Error/> : null}
       </div>
-      {hasError? <Error/> : null}
+      
     </div>
   );
 };
