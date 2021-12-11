@@ -37,7 +37,7 @@ export function CreateTask({ modal, toggle, save }) {
     <Modal isOpen={modal} toggle={toggle} className="modal_container">
       <ModalHeader toggle={toggle}>Create News</ModalHeader>
       <ModalBody>
-        <form>
+        <form onSubmit={addNew}>
           <div className="form-group">
             <label className="label_task_form">Title</label>
             <input
