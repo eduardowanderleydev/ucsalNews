@@ -77,12 +77,6 @@ frontend
 
 ---
 
-### Sonarqube analysis
-
-`sonarqube image` <br>
-
----
-
 ### Team
 
 <table>
