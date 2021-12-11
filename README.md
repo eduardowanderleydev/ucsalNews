@@ -68,7 +68,12 @@ backend
 - [Swagger](https://swagger.io/)
 
 frontend
-
+- [Node](https://nodejs.org/en/)
+- [ReactJs](https://pt-br.reactjs.org/)
+- [Bootstrap](https://getbootstrap.com/docs/5.1/getting-started/introduction/)
+- [Axios](https://axios-http.com/docs/intro)
+- [react-hook-form](https://react-hook-form.com/)
+- [react-router-dom](https://www.npmjs.com/package/react-router-dom)
 
 ---
 

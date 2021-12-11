@@ -1,7 +1,8 @@
 ## Backend
 Para entrar na pasta de backend do projeto :
-- `cd backend`
-
+```bash
+$ cd backend
+```
 ## Pré-requisitos
 
 - `maven 3+ `<br>
@@ -29,4 +30,6 @@ Para entrar na pasta de backend do projeto :
 
 ## Executando a aplicação
 
-- `mvn spring-boot:run`<br>
+```bash
+$ mvn spring-boot:run
+```
