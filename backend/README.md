@@ -1,8 +1,10 @@
 ## Backend
 Para entrar na pasta de backend do projeto :
+
 ```bash
 $ cd backend
 ```
+
 ## Pré-requisitos
 
 - `maven 3+ `<br>

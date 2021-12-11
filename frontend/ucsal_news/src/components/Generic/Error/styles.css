@@ -1,0 +1,23 @@
+.error-alert {
+  animation: slide-in 700ms;
+  max-width: 50%;
+  padding: 25px;
+  border: 1px solid gray;
+  border-radius: 3px;
+  margin-top: 20px;
+  margin-left: 25%;
+  font-size: 18px;
+
+  border-color: #e8273b;
+  color: #fff;
+  background-color: #ed5565;
+}
+
+@keyframes slide-in {
+  from {
+    transform: translateX(-100%);
+  }
+  to {
+    transform: translateX(0%);
+  }
+}
