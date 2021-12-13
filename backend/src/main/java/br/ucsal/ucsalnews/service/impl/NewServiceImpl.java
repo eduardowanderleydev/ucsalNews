@@ -72,7 +72,7 @@ public class NewServiceImpl implements INewService {
 
     public New dtoToObj(NewDTORequest dto) {
         New newToReturn = new New();
-        newToReturn.setCategories(dto.getCategories().stream().map(obj -> new Category(obj)).collect(Collectors.toList()));
+//        newToReturn.setCategories(dto.getCategories().stream().map(obj -> new Category(obj)).collect(Collectors.toList()));
         newToReturn.setContent(dto.getContent());
         newToReturn.setAuthor(findAuthorById(dto.getAuthor_id(), dto));
         newToReturn.setTitle(dto.getTitle());
@@ -82,7 +82,7 @@ public class NewServiceImpl implements INewService {
 
     private New updateData(Long id, NewDTORequest dto) {
         New newToReturn = newRepository.findById(id).get();
-        newToReturn.setCategories(dto.getCategories().stream().map(obj -> new Category(obj)).collect(Collectors.toList()));
+//        newToReturn.setCategories(dto.getCategories().stream().map(obj -> new Category(obj)).collect(Collectors.toList()));
         newToReturn.setContent(dto.getContent());
         newToReturn.setAuthor(findAuthorById(dto.getAuthor_id(), dto));
         newToReturn.setTitle(dto.getTitle());
