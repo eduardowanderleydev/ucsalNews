@@ -59,8 +59,6 @@ export function CreateTask({ modal, toggle, save }) {
             ></textarea>
           </div>
 
-          <div className="form-group">
-            <label className="label_task_form">id</label>
             <input
               hidden
               className="form-control"
@@ -68,7 +66,7 @@ export function CreateTask({ modal, toggle, save }) {
               value={1}
               name="author_id"
             />
-          </div>
+
         </form>
       </ModalBody>
       <ModalFooter>

@@ -73,6 +73,7 @@ function login () {
               <div className="Form-Group">
                 <Field
                   placeholder="Senha"
+                  type="password"
                   name="password"
                   className="input-login"
                 />
