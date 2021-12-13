@@ -7,31 +7,30 @@ import "./createTask.css";
 export function CreateTask({ modal, toggle, save }) {
   const [titleNews, settitleNews] = useState("");
   const [description, setDescription] = useState("");
+  const [id, setId] = useState("")
 
   const handleChange = (e) => {
     const { name, value } = e.target;
 
-    if (name === "titleNews") {
+    if (name === "title") {
       settitleNews(value);
-    } else {
+    } else if (name === "content") {
       setDescription(value);
+    } else {
+      setId(value)
     }
   };
 
-  const handleSave = () => {
+  const handleSave = async () => {
     let taskObj = {}
-    taskObj['Name'] = titleNews
-    taskObj['Description'] = description
+    taskObj['title'] = titleNews
+    taskObj['content'] = description
+    taskObj['author_id'] = 1
     save(taskObj)
+    await addNew(taskObj)
   }
 
-  const addNew = data => axios.post("http://localhost:8080/news" , data)
-  .then(() => {
-    console.log("OK")
-  })
-  .catch(() => {
-    console.log("ERRO")
-  })
+  const addNew = async data => await axios.post("http://localhost:8080/news" , data)
 
   return (
     <Modal isOpen={modal} toggle={toggle} className="modal_container">
@@ -44,7 +43,7 @@ export function CreateTask({ modal, toggle, save }) {
               className="form-control"
               type="text"
               value={titleNews}
-              name="titleNews"
+              name="title"
               onChange={handleChange}
             />
           </div>
@@ -55,10 +54,19 @@ export function CreateTask({ modal, toggle, save }) {
               rows="5"
               className="form-control"
               value={description}
-              name="descriptionNews"
+              name="content"
               onChange={handleChange}
             ></textarea>
           </div>
+
+            <input
+              hidden
+              className="form-control"
+              type="text"
+              value={1}
+              name="author_id"
+            />
+
         </form>
       </ModalBody>
       <ModalFooter>

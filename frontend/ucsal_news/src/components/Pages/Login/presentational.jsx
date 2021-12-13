@@ -19,8 +19,8 @@ function login () {
     axios.post("http://localhost:8080/user/autenticar", values).then((resp) => {
       const { data } = resp;
       if (data) {
-        localStorage.setItem("app-token", data);
-        history.push("/");
+        localStorage.setItem("app-token", JSON.stringify (data));
+        history.push("/home");
         setHasError(false)
       }
     })
@@ -73,6 +73,7 @@ function login () {
               <div className="Form-Group">
                 <Field
                   placeholder="Senha"
+                  type="password"
                   name="password"
                   className="input-login"
                 />
