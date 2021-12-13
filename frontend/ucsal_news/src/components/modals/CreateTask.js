@@ -1,3 +1,4 @@
+import axios from "axios";
 import React, { useState } from "react";
 import { Button, Modal, ModalHeader, ModalBody, ModalFooter } from "reactstrap";
 
@@ -24,11 +25,19 @@ export function CreateTask({ modal, toggle, save }) {
     save(taskObj)
   }
 
+  const addNew = data => axios.post("http://localhost:8080/news" , data)
+  .then(() => {
+    console.log("OK")
+  })
+  .catch(() => {
+    console.log("ERRO")
+  })
+
   return (
     <Modal isOpen={modal} toggle={toggle} className="modal_container">
       <ModalHeader toggle={toggle}>Create News</ModalHeader>
       <ModalBody>
-        <form>
+        <form onSubmit={addNew}>
           <div className="form-group">
             <label className="label_task_form">Title</label>
             <input

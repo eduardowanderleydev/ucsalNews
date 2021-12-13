@@ -1,18 +1,15 @@
-.social-container {
-    padding-top: 50px;
-}
 .member-team {
     font-size: 1rem;
 }
 
 .social-medias-icons {
-    margin-bottom: 15px;
+    margin-bottom: 10px;
 }
 
 .frufru {
     font-size: 11px;
     font-weight: 600;
-    color: rgb(109, 255, 42);
+    color: rgb(32, 61, 19);
 }
 .member-info-container {
     display: flex;
