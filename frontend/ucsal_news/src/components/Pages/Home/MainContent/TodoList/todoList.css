@@ -116,15 +116,20 @@
 
 .post_content {
   display: flex;
+  justify-content: space-between;
 }
 
 .post_content ul {
   list-style: none;
 }
 
-.card_date_info {
+.card_date_info_position {
   display: flex;
-  justify-content: flex-end;
-  margin-right: 15px;
-  margin-bottom: 10px;
+  justify-content:flex-start ;
+  
+  width: 90px;
+  margin-top: 5px;
+  color: #0CC;
+  font-weight: 700;
+  font-size: 17px;
 }

@@ -30,7 +30,7 @@ function TodoList() {
 
   const today = new Date();
 
-  const date = today.getFullYear()+'-'+(today.getMonth()+1)+'-'+today.getDate();
+  const date = today.getDate()+'-'+(today.getMonth()+1)+'-'+today.getFullYear();
 
   return (
     <>
@@ -45,6 +45,7 @@ function TodoList() {
           <CreateTask toggle={toggle} modal={modal} save={saveTask} />
         </div>
         <div className="post_container">
+        
           {taskList.map((item) => (
             <div className="card_content">
               <div className="post_content">
@@ -52,9 +53,11 @@ function TodoList() {
                   <li className="card_title">{item.Name}</li>
                   <li className="card_description">{item.Description}</li>
                 </ul>
+                <div className="card_date_info">
+                <div className="card_date_info_position">
+                {`${date}`}
+                </div>
               </div>
-              <div className="card_date_info">
-              {` Data : ${date}`}
               </div>
             </div>
           ))}
