@@ -1,10 +1,9 @@
-import axios from "axios";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Button, Modal, ModalHeader, ModalBody, ModalFooter } from "reactstrap";
 
 import "./createTask.css";
 
-export function CreateTask({ modal, toggle, save }) {
+export function EditTask({ modal, toggle, updateTask, taskObj }) {
   const [titleNews, settitleNews] = useState("");
   const [description, setDescription] = useState("");
 
@@ -18,26 +17,24 @@ export function CreateTask({ modal, toggle, save }) {
     }
   };
 
-  const handleSave = () => {
-    let taskObj = {}
-    taskObj['Name'] = titleNews
-    taskObj['Description'] = description
-    save(taskObj)
-  }
+  useEffect(() => {
+    settitleNews(taskObj.Name)
+    setDescription(taskObj.Description)
+  },[])
 
-  const addNew = data => axios.post("http://localhost:8080/news" , data)
-  .then(() => {
-    console.log("OK")
-  })
-  .catch(() => {
-    console.log("ERRO")
-  })
+  const handleUpdate = (e) => {
+      e.preventDefault();
+      let tempObj = {};
+      tempObj['Name'] = titleNews
+      tempObj['Description'] = description
+      updateTask(tempObj)
+  }
 
   return (
     <Modal isOpen={modal} toggle={toggle} className="modal_container">
-      <ModalHeader toggle={toggle}>Create News</ModalHeader>
+      <ModalHeader toggle={toggle}>Edit News</ModalHeader>
       <ModalBody>
-        <form onSubmit={addNew}>
+        <form>
           <div className="form-group">
             <label className="label_task_form">Title</label>
             <input
@@ -65,12 +62,12 @@ export function CreateTask({ modal, toggle, save }) {
         <Button color="secondary" onClick={toggle}>
           Cancel
         </Button>{" "}
-        <Button color="primary" onClick={handleSave}>
-          Create
+        <Button color="primary" onClick={handleUpdate}>
+          Edit
         </Button>
       </ModalFooter>
     </Modal>
   );
 }
 
-export default CreateTask;
+export default EditTask;

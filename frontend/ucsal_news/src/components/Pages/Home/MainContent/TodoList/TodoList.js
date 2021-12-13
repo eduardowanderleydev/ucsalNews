@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import Card from "../../../../Card";
 
 import CreateTask from "../../../../modals/CreateTask";
 
@@ -17,6 +18,22 @@ function TodoList() {
     }
   }, []);
 
+  const deleteTask = (index) => {
+    let tempList = taskList;
+    tempList.splice(index, 1);
+    localStorage.setItem("taskList", JSON.stringify(tempList));
+    setTaskList(tempList);
+    window.location.reload();
+  };
+
+  const updateListArray = (obj, index) => {
+    let tempList = taskList;
+    tempList[index] = obj;
+    localStorage.setItem("taskList", JSON.stringify(tempList));
+    setTaskList(tempList);
+    window.location.reload();
+  };
+
   const toggle = () => {
     setModal(!modal);
   };
@@ -24,8 +41,9 @@ function TodoList() {
   const saveTask = (taskObj) => {
     let tempList = taskList;
     tempList.push(taskObj);
-    setTaskList(tempList);
+    localStorage.setItem("taskList", JSON.stringify(tempList));
     setModal(false);
+    setTaskList(taskList);
   };
 
   return (
@@ -41,15 +59,8 @@ function TodoList() {
           <CreateTask toggle={toggle} modal={modal} save={saveTask} />
         </div>
         <div className="post_container">
-          {taskList.map((item) => (
-            <div className="card_content">
-              <div className="post_content">
-                <ul className="card_info_container">
-                  <li className="card_title">{item.Name}</li>
-                  <li className="card_description">{item.Description}</li>
-                </ul>
-              </div>
-            </div>
+          {taskList.map((item, index) => (
+            <Card taskObj={item} index={index} deleteTask={deleteTask} updateListArray={updateListArray} />
           ))}
         </div>
       </div>

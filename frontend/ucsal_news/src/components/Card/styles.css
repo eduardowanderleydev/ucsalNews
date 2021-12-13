@@ -1,0 +1,78 @@
+.card_content {
+    display: block;
+    width: 470px;
+    background-color: #ffffff;
+    border-radius: 10px;
+    box-shadow: rgba(0, 0, 0, 0.07) 0px 1px 2px, rgba(0, 0, 0, 0.07) 0px 2px 4px,
+      rgba(0, 0, 0, 0.07) 0px 4px 8px, rgba(0, 0, 0, 0.07) 0px 8px 16px,
+      rgba(0, 0, 0, 0.07) 0px 16px 32px, rgba(0, 0, 0, 0.07) 0px 32px 64px;
+    border-radius: 10px;
+    transition: 0.4s ease-out;
+    position: relative;
+    left: 0px;
+  
+    margin: 20px;
+  }
+  
+  .card_content:hover {
+    transform: translateY(-10px);
+    transition: 0.4s ease-out;
+  }
+  
+  .card_title,
+  .card_description {
+    text-align: left;
+    padding: 10px;
+  }
+  
+  .card_title {
+    color: #0CC;
+    font-weight: 700;
+    font-size: 27px;
+    margin-top: 20px;
+  }
+  
+  .card_description {
+    color: #555;
+    font-weight: 600;
+    line-height: 35px;
+    margin: 20px 0 7px;
+  }
+  
+  .post_content {
+    display: flex;
+    justify-content: space-between;
+  }
+  
+  .post_content ul {
+    list-style: none;
+  }
+  
+  .card_date_info_position {
+    display: flex;
+    justify-content:flex-start ;
+    
+    width: 90px;
+    margin-top: 5px;
+    color: #0CC;
+    font-weight: 700;
+    font-size: 17px;
+  }
+
+  .icons_container {
+      width: 100%;
+      display: flex;
+      justify-content: flex-end;
+  }
+
+  .icons_area {
+    display: flex;
+    cursor: pointer;
+    margin-right: 20px;
+    margin-bottom: 10px;
+  }
+
+  .icons_area :first-child {
+      margin-right: 20px;
+  }
+  
