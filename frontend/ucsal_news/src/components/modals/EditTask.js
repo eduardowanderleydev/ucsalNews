@@ -18,15 +18,15 @@ export function EditTask({ modal, toggle, updateTask, taskObj }) {
   };
 
   useEffect(() => {
-    settitleNews(taskObj.Name)
-    setDescription(taskObj.Description)
+    settitleNews(taskObj.title)
+    setDescription(taskObj.content)
   },[])
 
   const handleUpdate = (e) => {
       e.preventDefault();
       let tempObj = {};
-      tempObj['Name'] = titleNews
-      tempObj['Description'] = description
+      tempObj['title'] = titleNews
+      tempObj['content'] = description
       updateTask(tempObj)
   }
 

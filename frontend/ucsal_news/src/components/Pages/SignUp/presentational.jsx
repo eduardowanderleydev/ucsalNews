@@ -36,7 +36,7 @@ function Signup() {
       const { data } = resp;
       if (data) {
         localStorage.setItem("app-token", data);
-        history.push("/Login");
+        history.push("/");
       }
     });
   };

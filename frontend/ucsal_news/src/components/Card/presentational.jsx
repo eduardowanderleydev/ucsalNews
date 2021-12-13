@@ -33,8 +33,8 @@ function card({ taskObj, index, deleteTask, updateListArray }) {
       <div className="card_content">
         <div className="post_content">
           <ul className="card_info_container">
-            <li className="card_title">{taskObj.Name}</li>
-            <li className="card_description">{taskObj.Description}</li>
+            <li className="card_title">{taskObj.title}</li>
+            <li className="card_description">{taskObj.content}</li>
           </ul>
           <div className="card_date_info">
             <div className="card_date_info_position">{`${date}`}</div>
