@@ -9,8 +9,7 @@
     bottom: 0;
     z-index: 100;
     width: 300px;
-    overflow-y: visible;
-    margin-top: 150px;    
+    overflow-y: visible;   
 }
 
 .tm-header-wrapper {
@@ -29,11 +28,11 @@
 
 .tm-site-header {
     margin-top: 50px;
-    margin-bottom: 115px;
+    margin-bottom: 55px;
 }
 
 .tm-nav { 
-margin-bottom: 100px; 
+margin-bottom: 80px; 
 }
 
 .tm-nav-item {

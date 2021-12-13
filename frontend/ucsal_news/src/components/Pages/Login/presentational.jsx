@@ -1,5 +1,7 @@
-import React from "react";
+import React, {useState} from "react";
 import "./styles.css";
+
+import Error from "../../Generic/Error";
 
 import { ErrorMessage, Formik, Form, Field } from "formik";
 import * as yup from "yup";
@@ -8,15 +10,24 @@ import axios from "axios";
 
 import { useHistory } from "react-router-dom";
 
-const login = () => {
+function login () {
+
+  // eslint-disable-next-line react-hooks/rules-of-hooks
+  const [hasError, setHasError] = useState(false)
+
   const handleSubmit = (values) => {
     axios.post("http://localhost:8080/user/autenticar", values).then((resp) => {
       const { data } = resp;
       if (data) {
-        localStorage.setItem("app-token", data);
-        history.push("/");
+        localStorage.setItem("app-token", JSON.stringify (data));
+        history.push("/home");
+        setHasError(false)
       }
-    });
+    })
+    .catch(() => {
+      setHasError(true)
+    })
+    ;
   };
 
   const validationsSignIn = yup.object().shape({
@@ -35,7 +46,7 @@ const login = () => {
 
   return (
     <div className="login-back">
-      <div className="container">
+      <div className="container_login">
         <div className="login-box">
           <h2>Welcome</h2>
           <h2 className="maintitle">LOGIN</h2>
@@ -62,6 +73,7 @@ const login = () => {
               <div className="Form-Group">
                 <Field
                   placeholder="Senha"
+                  type="password"
                   name="password"
                   className="input-login"
                 />
@@ -73,6 +85,10 @@ const login = () => {
               </div>
 
               <div className="buttonContainer">
+                <button className="sign-in" type="submit">
+                  Sign in
+                </button>
+
                 <button
                   className="sign-up"
                   onClick={() => {
@@ -81,15 +97,13 @@ const login = () => {
                 >
                   Sign up
                 </button>
-
-                <button className="sign-in" type="submit">
-                  Sign in
-                </button>
               </div>
             </Form>
           </Formik>
         </div>
+        {hasError? <Error/> : null}
       </div>
+      
     </div>
   );
 };

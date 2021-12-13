@@ -12,10 +12,10 @@ function App() {
     <div className="App">
       <Router>
         <Switch>
-          <Route exact path="/Login" component={Login}/>
-          <PrivateRoute exact path="/" component={Home}/>
+          <Route exact path="/" component={Login}/>
+          <PrivateRoute exact path="/home" component={Home}/>
           <Route exact path="/SignUp" component={SignUp}/>
-          <PrivateRoute component={Notfound}/>
+          <Route component={Notfound}/>
         </Switch>  
       </Router>
     </div>

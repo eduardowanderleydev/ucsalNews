@@ -5,7 +5,7 @@ body{
     height: 100vh;
 }
 
-.container{
+.container_login{
 	width: 1050px;
 	height: 700px;
 	background-color: rgba(25,220,250,0.8);
