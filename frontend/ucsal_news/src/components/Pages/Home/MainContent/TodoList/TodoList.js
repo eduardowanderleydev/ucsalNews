@@ -28,6 +28,10 @@ function TodoList() {
     setModal(false);
   };
 
+  var today = new Date();
+
+  var date = today.getFullYear()+'-'+(today.getMonth()+1)+'-'+today.getDate();
+
   return (
     <>
       <div className="todolist_container">
@@ -48,6 +52,9 @@ function TodoList() {
                   <li className="card_title">{item.Name}</li>
                   <li className="card_description">{item.Description}</li>
                 </ul>
+              </div>
+              <div className="card_date_info">
+              {` Data : ${date}`}
               </div>
             </div>
           ))}

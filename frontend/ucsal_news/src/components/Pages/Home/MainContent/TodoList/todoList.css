@@ -121,3 +121,10 @@
 .post_content ul {
   list-style: none;
 }
+
+.card_date_info {
+  display: flex;
+  justify-content: flex-end;
+  margin-right: 15px;
+  margin-bottom: 10px;
+}
