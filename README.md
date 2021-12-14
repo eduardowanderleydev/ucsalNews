@@ -12,7 +12,6 @@ Project created for the Software Process class in the Software Engineering Cours
 * [Getting started](#getting-started)
 * [How to use](#how-to-use)
 * [Techs](#techs)
-* [SonarQube Analysis](#sonarqube-analysis)
 * [Team](#team)
 
 ---
