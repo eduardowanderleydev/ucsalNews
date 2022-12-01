@@ -50,21 +50,6 @@ function SocialFollow() {
             </div>
           </a>
         </div>
-
-        <span className="member-team">Guilherme Pontes <span className="frufru">(Back-end Developer):</span></span>
-          <div className="member-info-container">
-          <a href="https://github.com/GuilhermePontes1">
-            <div className="social-medias-icons">
-              <AiFillGithub color="black" size="2em" />
-            </div>
-          </a>
-          <a href="https://www.linkedin.com/in/guilherme-pontes-baa319199/">
-            <div className="social-medias-icons">
-              <AiFillLinkedin color="black" size="2em" />
-            </div>
-          </a>
-        </div>
-
         
       </div>
     </div>

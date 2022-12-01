@@ -2,10 +2,12 @@ import React from 'react'
 
 import './styles.css'
 
-function Error() {
+function Error(props) {
+
+    const {description = 'Aparentemente ocorreu um erro, por favor tente novamente'} = props
     return (
         <div className="error-alert">
-            Aparentemente houve um erro ao tentar autenticar o seu usuário, por favor, tente novamente.
+            {description}
         </div>
     )
 }

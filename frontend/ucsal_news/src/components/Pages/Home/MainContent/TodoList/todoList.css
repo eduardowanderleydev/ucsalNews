@@ -7,18 +7,10 @@
 .todolist_content {
   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: space-evenly;
   width: 100%;
   height: 190px;
   background-color: #e9eef6;
-}
-
-.todolist__logo {
-  background-image: url('./assets/ucsal_logo.png');
-  width: 200px;
-  height: 100px;
-  margin-bottom: 15px;
-  background-size: cover;
 }
 
 .todolist__title {

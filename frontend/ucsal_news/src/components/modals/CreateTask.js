@@ -7,7 +7,7 @@ import "./createTask.css";
 export function CreateTask({ modal, toggle, save }) {
   const [titleNews, settitleNews] = useState("");
   const [description, setDescription] = useState("");
-  const [id, setId] = useState("")
+  const [, setId] = useState("")
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -21,6 +21,8 @@ export function CreateTask({ modal, toggle, save }) {
     }
   };
 
+  const addNew = async data => await axios.post("http://localhost:8080/news" , data)
+
   const handleSave = async () => {
     let taskObj = {}
     taskObj['title'] = titleNews
@@ -29,8 +31,6 @@ export function CreateTask({ modal, toggle, save }) {
     save(taskObj)
     await addNew(taskObj)
   }
-
-  const addNew = async data => await axios.post("http://localhost:8080/news" , data)
 
   return (
     <Modal isOpen={modal} toggle={toggle} className="modal_container">

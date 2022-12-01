@@ -6,6 +6,7 @@ import "./createTask.css";
 export function EditTask({ modal, toggle, updateTask, taskObj }) {
   const [titleNews, settitleNews] = useState("");
   const [description, setDescription] = useState("");
+ 
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -20,7 +21,7 @@ export function EditTask({ modal, toggle, updateTask, taskObj }) {
   useEffect(() => {
     settitleNews(taskObj.title)
     setDescription(taskObj.content)
-  },[])
+  },[taskObj.content, taskObj.title])
 
   const handleUpdate = (e) => {
       e.preventDefault();
@@ -29,6 +30,7 @@ export function EditTask({ modal, toggle, updateTask, taskObj }) {
       tempObj['content'] = description
       updateTask(tempObj)
   }
+
 
   return (
     <Modal isOpen={modal} toggle={toggle} className="modal_container">

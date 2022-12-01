@@ -16,18 +16,13 @@ function card({ taskObj, index, deleteTask, updateListArray }) {
   const date =
     today.getDate() + "-" + (today.getMonth() + 1) + "-" + today.getFullYear();
 
-  const handleDelete = () => {
-    deleteTask(index);
-  };
-
   const toggle = () => {
     setModal(!modal);
   };
 
   const updateTask = (obj) => {
-      updateListArray(obj, index)
-  };
-
+    updateListArray(obj, index)
+};
   return (
     <div>
       <div className="card_content">
@@ -43,11 +38,11 @@ function card({ taskObj, index, deleteTask, updateListArray }) {
         <div className="icons_container">
           <div className="icons_area">
             <AiFillEdit size={25} onClick={() => setModal(true)} />
-            <FaTrashAlt size={20} onClick={handleDelete} />
+            <FaTrashAlt size={20} onClick={deleteTask} />
           </div>
         </div>
       </div>
-      <EditTask modal={modal} toggle={toggle} updateTask={updateTask} taskObj={taskObj} />
+      <EditTask modal={modal} toggle={toggle} taskObj={taskObj} updateTask={updateTask} />
     </div>
   );
 }
